@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --layer0: rgb(45,45,45);
+    --layer1: rgb(60,60,60);
+    --layer2: rgb(80,80,80);
+
+    --text-color: white;
+    --text-family:  sans-serif;
+}
+
+body {
+    color: var(--text-color);
+    font-family: var(--text-family);
+}
+
+nav, main, aside {
+    padding: 5px;
+}
+
+nav {
+    background: var(--layer1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 35px;
+}
+
+main {
+    background: var(--layer0);
+    position: fixed;
+    top: 35px;
+    left: 0;
+    right: 150px;
+    bottom: 0;
+}
+
+aside {
+    background: var(--layer2);
+    position: fixed;
+    text-align: center;
+    top: 35px;
+    right: 0;
+    width: 150px;
+    bottom: 0;
+}
+
+#login-form input {
+    width: 100%;
+}
+
+.centered-y {
+    position: relative;
+    transform: translateY(-50%);
+    top: 50%;
+}
