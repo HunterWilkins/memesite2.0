@@ -14,4 +14,14 @@ $(document).ready(function() {
         });
     });
 
+    $("#logout").on("click", function() {
+        event.preventDefault();
+
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/api/logout"
+        });
+    });
+
 });

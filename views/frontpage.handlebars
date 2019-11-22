@@ -1,0 +1,17 @@
+<aside>
+    {{#if userId === "undefined"}}
+        <form id = "login-form">
+            <input type="text" placeholder = "Username">
+            <input type="password" placeholder = "Password">
+            <button id = "signin">Sign In</button>
+            <button id = "signup">/Up</button>
+        </form>
+    {{else}}
+        <button id = "logout">Logout</button>
+    {{/if}}
+    
+</aside>
+
+<main>
+    Content
+</main>
