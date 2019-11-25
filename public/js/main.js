@@ -28,7 +28,10 @@ $(document).ready(function() {
         $("#create-post").css({"display": "block"});
     });
 
-    $("#submit-post").on("click", function() {
+    $("#submit-post").on("click", function(event) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        
         $.ajax({
             url: "/api/createPost",
             method: "POST",
