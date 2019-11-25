@@ -11,6 +11,10 @@
     --text-family:  sans-serif;
 }
 
+em {
+    font-style: italic;
+}
+
 body {
     color: var(--text-color);
     font-family: var(--text-family);
@@ -38,6 +42,10 @@ main {
     bottom: 0;
 }
 
+#create-post {
+    display: none;
+}
+ 
 aside {
     background: var(--layer2);
     position: fixed;

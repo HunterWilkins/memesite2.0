@@ -1,6 +1,9 @@
+<link rel="stylesheet" href="/css/frontpage.css">
+
 <aside>
     {{#if userId}}
         <button id = "logout">Logout</button>
+        <button id = "toggle-post">Make a Post!</button>
     {{else}}
         <form id = "login-form">
             <input type="text" placeholder = "Username">
@@ -9,9 +12,15 @@
             <button id = "signup">/Up</button>
         </form>
     {{/if}}
-    
 </aside>
 
 <main>
-    Content
+    <form id = "create-post" >
+            <h2>Create a Post</h2>
+            <input type="text" placeholder = "Title">
+            <input type="text" placeholder = "Body">
+            <input type="text" placeholder = "Genre">
+            <input type="text" placeholder = "Tags">
+            <button id = "submit-post">Submit</button>
+        </form>
 </main>
