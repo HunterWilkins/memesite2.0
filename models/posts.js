@@ -3,6 +3,11 @@ const mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
 let PostSchema = new Schema ({
+    id: {
+        type: String,
+        required: true
+    },
+    
     author: {
         type: String,
         required: true

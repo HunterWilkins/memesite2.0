@@ -11,4 +11,14 @@ module.exports = function(app) {
             res.render("frontpage");
         }
     });
+
+    app.get("/posts/:id", function(req, res) {
+        console.log(req.params.id);
+        if (req.session.userId) {
+            res.render("post", {userId: req.session.userId});
+        }
+        else {
+            res.render("post");
+        }
+    });
 }

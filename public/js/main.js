@@ -1,18 +1,4 @@
-$(document).ready(function() {
-
-    // $("main").empty();
-
-    $.getJSON("/api/post/all", function(data) {
-        data.forEach(item => {
-            $("main").append(
-                `<div class = "post">
-                    <p class = "post-title">${item.title}</p>
-                    <p class = "post-author"><em>${item.author}</em></p>
-                </div>
-                `
-            );
-        });
-    });
+$(document).ready(function() {    
 
     $("#login-form").on("click", "button", function() {
         event.preventDefault();
@@ -47,11 +33,12 @@ $(document).ready(function() {
             url: "/api/createPost",
             method: "POST",
             data: {
+                id: postQuantity,
                 title: $("input[placeholder = Title]").val(),
                 body: $("input[placeholder = Body]").val(),
                 genre: $("input[placeholder = Genre]").val(),
                 tags: $("input[placeholder = Tags]").val(),
             }
         });
-    })
+    });
 });

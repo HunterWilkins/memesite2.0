@@ -2,13 +2,26 @@ module.exports = function(app) {
     let User = require("../models/users.js");
     let Post = require("../models/posts.js");
 
-    app.get("/api/post/all", function(req, res) {
-        Post.find({})
-        .then(function(dbPosts) {
-            res.json(dbPosts);
-        }).catch(function(err) {
-            res.json(err);
-        });
+    app.get("/api/post/:id", function(req, res) {
+        if (req.params.id === "all") {
+            Post.find({})
+            .then(function(dbPosts) {
+                res.json(dbPosts);
+            }).catch(function(err) {
+                res.json(err);
+            });    
+        }
+
+        else {
+            Post.findOne({
+                id: req.params.id
+            })
+            .then(function(dbPost) {
+                res.json(dbPost);
+            }).catch(function(err) {
+                res.json(err);
+            });
+        }
     });
 
     app.post("/api/signup", function(req, res) {
@@ -45,13 +58,13 @@ module.exports = function(app) {
     });
 
     app.post("/api/createPost", function(req, res) {
-        let newId = Math.floor(Math.random()*2000).toString();
         User.findOne({
             id: req.session.userId 
         })
         .then(function(dbUser) {
 
             let newPost = {
+                id: req.body.id,
                 title: req.body.title,
                 body: req.body.body,
                 genre: req.body.genre,
