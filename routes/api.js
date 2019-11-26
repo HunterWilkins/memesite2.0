@@ -3,7 +3,19 @@ module.exports = function(app) {
     let Post = require("../models/posts.js");
 
     app.get("/api/post/:id", function(req, res) {
-        if (req.params.id === "all") {
+        Post.findOne({
+            id: req.params.id
+        })
+        .then(function(dbPost) {
+            res.json(dbPost);
+        }).catch(function(err) {
+            res.json(err);
+        });
+    
+    });
+
+    app.get("/api/posts/:genre", function(req, res) {
+        if (req.params.genre === "all") {
             Post.find({})
             .then(function(dbPosts) {
                 res.json(dbPosts);
@@ -11,18 +23,17 @@ module.exports = function(app) {
                 res.json(err);
             });    
         }
-
+        
         else {
-            Post.findOne({
-                id: req.params.id
-            })
-            .then(function(dbPost) {
-                res.json(dbPost);
+            Post.find({
+                genre: req.params.genre
+            }).then(function(dbPosts) {
+                res.json(dbPosts);
             }).catch(function(err) {
                 res.json(err);
-            });
+            });    
         }
-    });
+    })
 
     app.post("/api/signup", function(req, res) {
         console.log("Signing Up...");
@@ -58,6 +69,8 @@ module.exports = function(app) {
     });
 
     app.post("/api/createPost", function(req, res) {
+        console.log("Create Post Route Called");
+        console.log(req.session.userId);
         User.findOne({
             id: req.session.userId 
         })
@@ -72,12 +85,19 @@ module.exports = function(app) {
                 author: dbUser.username,
                 comments: []
             }
+
+            console.log(newPost);
+
             Post.create(newPost)
             .then(function(dbPost) {
                 console.log(dbPost);
                 res.json(dbPost);
+            }).catch(err => {
+                console.log(err);
             });
+
         }).catch(function(err) {
+            console.log(err);
             res.json(err);
         });
 

@@ -1,16 +1,34 @@
 <link rel="stylesheet" href="/css/frontpage.css">
 
-
-
 <main>
     <form id = "create-post" >
-            <h2>Create a Post</h2>
-            <input type="text" placeholder = "Title">
-            <input type="text" placeholder = "Body">
-            <input type="text" placeholder = "Genre">
-            <input type="text" placeholder = "Tags">
-            <button id = "submit-post">Submit</button>
-        </form>
+        <h2>Create a Post</h2>
+        <input type="text" placeholder = "Title">
+        <input type="text" placeholder = "Body">
+        <input type="text" placeholder = "Genre">
+        <input type="text" placeholder = "Tags">
+        <button id = "submit-post">Submit</button>
+    </form>
+
+    <h2 id = "frontpage-title">Front Page</h2>
+    <select name="genre" id="genre-picker">
+        <option disabled selected>Genres</option>
+        <option value="all">All</option>
+        <option value="gaming">Gaming</option>
+        <option value="literature">Literature</option>
+        <option value="music">Music</option>
+        <option value="comedy">Comedy</option>
+        <option value="programming">Programming</option>
+        <option value="animals">Animals</option>
+        <option value="film">Film</option>
+        <option value="tv">TV</option>
+        <option value="art">Art</option>
+        <option value="politics">Politics</option>
+    </select>
+    <br>
+    <div id="posts">
+
+    </div>
 </main>
 
 <script src="/js/frontpage.js"></script>

@@ -1,4 +1,9 @@
 $(document).ready(function() {    
+    let postQuantity = 0;
+    
+    $.getJSON("/api/posts/all", function(data) {
+        postQuantity = data.length;
+    });
 
     $("#login-form").on("click", "button", function() {
         event.preventDefault();
@@ -40,25 +45,27 @@ $(document).ready(function() {
     });
 
     $("#submit-post").on("click", function(event) {
-        let postQuantity = 0;
-        event.preventDefault();
-        event.stopImmediatePropagation();
-            
-        $.getJSON("/api/post/all", function(data) {
-            let tags = $("input[placeholder = Tags]").val().split(",");
-            postQuantity = data.length;
-            $.ajax({
-                url: "/api/createPost",
-                method: "POST",
-                data: {
-                    id: postQuantity,
-                    title: $("input[placeholder = Title]").val(),
-                    body: $("input[placeholder = Body]").val(),
-                    genre: $("input[placeholder = Genre]").val(),
-                    tags: tags,
-                }
-            });
+        let tags = $("input[placeholder = Tags]").val().split(",");
 
+        event.preventDefault();
+        event.stopImmediatePropagation();    
+
+        $.ajax({
+            url: "/api/createPost",
+            method: "POST",
+            data: {
+                id: postQuantity,
+                title: $("input[placeholder = Title]").val(),
+                body: $("input[placeholder = Body]").val(),
+                genre: $("input[placeholder = Genre]").val(),
+                tags: tags,
+            },
+            success: function() {
+                console.log("Success!");
+            },
+            error: function() {
+                console.log("Error");
+            }
         });
 
     });

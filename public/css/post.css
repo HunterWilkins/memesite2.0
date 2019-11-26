@@ -1,21 +1,36 @@
 article {
     position: relative;
     border-bottom: var(--layer2) 2px solid;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
+
 header {
     position: relative;
     max-width: 600px;
+    min-height: 60px;
     margin: 0 auto;
+    overflow-y: hidden;
+}
+
+#t-and-a {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 100px;
+    height: 100%;
 }
 
 #title {
     color: var(--highlight);
+    text-overflow: ellipsis;
 }
 
 #genre {
     position: absolute;
     opacity: .5;
     top: 0px;
+    max-width: 100px;
     right: 0px;
 }
 
@@ -28,6 +43,7 @@ header {
 }
 
 #author {
+
     opacity: .50;
 }
 
@@ -38,6 +54,8 @@ header {
     white-space: nowrap;
     overflow-x: auto;
     background: var(--layer1);
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
 .tag {
