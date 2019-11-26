@@ -1,4 +1,7 @@
+
 $(document).ready(function() {
+    let user;
+
     $.getJSON(`/api/post/${window.location.pathname.split("/")[2]}`, function(data) {
         console.log(data);
         $("#title").text(data.title);
@@ -13,6 +16,5 @@ $(document).ready(function() {
             )
         })
     });
-
-
+    
 });

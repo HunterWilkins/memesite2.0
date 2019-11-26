@@ -1,6 +1,7 @@
 $(document).ready(function() {    
+    let user;
     let postQuantity = 0;
-    
+
     $.getJSON("/api/posts/all", function(data) {
         postQuantity = data.length;
     });

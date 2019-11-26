@@ -35,12 +35,26 @@ module.exports = function(app) {
         }
     })
 
+    app.post("/api/currentUser", function(req, res) {
+        User.findOne({
+            id: req.session.userId
+        }).then(function(dbUser) {
+            req.session.username = dbUser.username;
+            req.session.userId = dbUser.id;
+            res.sendStatus(200);
+        }).catch(function(err) {
+            res.json(err);
+        });
+    });
+
     app.post("/api/signup", function(req, res) {
         console.log("Signing Up...");
         console.log(req.body);
         User.create(req.body)
         .then(function(dbUser) {
             console.log(dbUser);
+            req.session.userId = newId;
+            req.session.username = dbUser.username;
             res.json(dbUser);
         }).catch(function(err) {
             res.json(err);
@@ -58,6 +72,7 @@ module.exports = function(app) {
         .then(function(dbUser) {
             if (dbUser) {
                 req.session.userId = newId;
+                req.session.username = dbUser.username;
                 res.json(dbUser);    
             }
         }).catch(function(err) {
@@ -73,9 +88,9 @@ module.exports = function(app) {
     app.post("/api/createPost", function(req, res) {
         console.log("Create Post Route Called");
         console.log(req.session.userId);
-        User.findOne({
+        User.findOneAndUpdate({
             id: req.session.userId 
-        })
+        }, {"$push": {"posts": req.body.id}})
         .then(function(dbUser) {
 
             let newPost = {
@@ -87,8 +102,6 @@ module.exports = function(app) {
                 author: dbUser.username,
                 comments: []
             }
-
-            console.log(newPost);
 
             Post.create(newPost)
             .then(function(dbPost) {
@@ -104,5 +117,7 @@ module.exports = function(app) {
         });
 
     });
+
+
 
 }
