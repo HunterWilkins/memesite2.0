@@ -56,8 +56,10 @@ module.exports = function(app) {
             password: req.body.password
         }, {"id" : newId}, {useFindAndModify: false})
         .then(function(dbUser) {
-            req.session.userId = newId;
-            res.json(dbUser);
+            if (dbUser) {
+                req.session.userId = newId;
+                res.json(dbUser);    
+            }
         }).catch(function(err) {
             res.json(err);
         });
