@@ -7,11 +7,15 @@ $(document).ready(function() {
             dataType: "json",
             url: `/api/${$(this).text() === "Sign In" ? "signin" : "signup" }`,
             data: {
-                username: $("input[placeholder = Username]").val(),
-                password: $("input[type=password]").val(),
-                id: Math.floor(Math.random() * 200).toString()
-            }
+                "username": $("input[placeholder = Username]").val(),
+                "password": $("input[type=password]").val(),
+                "id": Math.floor(Math.random() * 200).toString()
+            },
+             success: function() {        
+                window.location.reload();  
+             }
         });
+        
     });
 
     $("#logout").on("click", function() {
@@ -19,8 +23,15 @@ $(document).ready(function() {
 
         $.ajax({
             type: "POST",
-            dataType: "json",
-            url: "/api/logout"
+            url: "/api/logout",
+            success: function() {
+                console.log("Succeeding!");
+                window.location.reload();
+            },
+            error: function(jqXHR, exception) {
+                console.log(jqXHR);
+                console.log(exception);
+            }
         });
     });
 
@@ -34,6 +45,7 @@ $(document).ready(function() {
         event.stopImmediatePropagation();
             
         $.getJSON("/api/post/all", function(data) {
+            let tags = $("input[placeholder = Tags]").val().split(",");
             postQuantity = data.length;
             $.ajax({
                 url: "/api/createPost",
@@ -43,7 +55,7 @@ $(document).ready(function() {
                     title: $("input[placeholder = Title]").val(),
                     body: $("input[placeholder = Body]").val(),
                     genre: $("input[placeholder = Genre]").val(),
-                    tags: $("input[placeholder = Tags]").val(),
+                    tags: tags,
                 }
             });
 

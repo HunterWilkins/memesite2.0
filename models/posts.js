@@ -24,7 +24,7 @@ let PostSchema = new Schema ({
     },
     
     tags: {
-        type: String,
+        type: Array,
         required: true
     },
 

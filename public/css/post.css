@@ -1,0 +1,50 @@
+article {
+    position: relative;
+    border-bottom: var(--layer2) 2px solid;
+}
+header {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#title {
+    color: var(--highlight);
+}
+
+#genre {
+    position: absolute;
+    opacity: .5;
+    top: 0px;
+    right: 0px;
+}
+
+#body {
+    padding: 5px;
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.5em;
+    color: var(--body-text);
+}
+
+#author {
+    opacity: .50;
+}
+
+#tags {
+    padding: 8px;
+    text-align:center;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: auto;
+    background: var(--layer1);
+}
+
+.tag {
+    cursor: pointer;
+    display: inline-block;
+    background: var(--layer2);
+    padding: 2px 4px;
+    margin: 2px;
+    border-radius: 4px;
+}

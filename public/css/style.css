@@ -7,8 +7,23 @@
     --layer1: rgb(60,60,60);
     --layer2: rgb(80,80,80);
 
+    --highlight: rgb(221, 221, 221);
+    --body-text: rgb(194, 194, 194);
+
     --text-color: white;
     --text-family:  sans-serif;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+h2 {
+    font-size: 26px;
+}
+
+h3 {
+    font-size: 24px;
 }
 
 em {

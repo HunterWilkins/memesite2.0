@@ -1,26 +1,26 @@
-
-<aside>
-    {{#if userId}}
-        <button id = "logout">Logout</button>
-        <button id = "toggle-post">Make a Post!</button>
-    {{else}}
-        <form id = "login-form">
-            <input type="text" placeholder = "Username">
-            <input type="password" placeholder = "Password">
-            <button id = "signin">Sign In</button>
-            <button id = "signup">/Up</button>
-        </form>
-    {{/if}}
-</aside>
-
+<link rel="stylesheet" href="/css/post.css">
 <main>
-    <h2 id = "title"></h2>
-    <p id="genre"></p>
-    <em><p id = "author"></p></em>
-    <hr>
-    <p id="body"></p>
-    <hr>
-    <p id="tags"></p>
+    <article>
+        <header>
+            <h2 id = "title"></h2>
+            <p id="genre"></p>
+            <em><p id = "author"></p></em>
+        </header>
+
+        <hr>
+
+        <p id="body"></p>
+
+        <hr>
+
+        <div id="tags">
+
+        </div>
+    </article>
+
+    <section>
+
+    </section>
 </main>
 
 <script src="/js/postPage.js"></script>
