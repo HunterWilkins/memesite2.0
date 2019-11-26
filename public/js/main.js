@@ -29,19 +29,25 @@ $(document).ready(function() {
     });
 
     $("#submit-post").on("click", function(event) {
+        let postQuantity = 0;
         event.preventDefault();
         event.stopImmediatePropagation();
-        
-        $.ajax({
-            url: "/api/createPost",
-            method: "POST",
-            data: {
-                id: postQuantity,
-                title: $("input[placeholder = Title]").val(),
-                body: $("input[placeholder = Body]").val(),
-                genre: $("input[placeholder = Genre]").val(),
-                tags: $("input[placeholder = Tags]").val(),
-            }
+            
+        $.getJSON("/api/post/all", function(data) {
+            postQuantity = data.length;
+            $.ajax({
+                url: "/api/createPost",
+                method: "POST",
+                data: {
+                    id: postQuantity,
+                    title: $("input[placeholder = Title]").val(),
+                    body: $("input[placeholder = Body]").val(),
+                    genre: $("input[placeholder = Genre]").val(),
+                    tags: $("input[placeholder = Tags]").val(),
+                }
+            });
+
         });
+
     });
 });
