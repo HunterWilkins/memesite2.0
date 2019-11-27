@@ -57,6 +57,7 @@ main {
     left: 0;
     right: 150px;
     bottom: 0;
+    overflow-y: auto;
 }
 
 aside {
