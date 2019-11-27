@@ -118,6 +118,14 @@ module.exports = function(app) {
 
     });
 
+    app.delete("/api/deletePost/:id", function(req, res) {
+        Post.remove({id: req.params.id})
+        .then(function() {
+            res.sendStatus(200);
+        }).catch(err => {
+            console.log(err);
+        })
+    })
 
 
 }

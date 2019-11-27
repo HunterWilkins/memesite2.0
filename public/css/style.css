@@ -6,6 +6,8 @@
     --layer0: rgb(45,45,45);
     --layer1: rgb(60,60,60);
     --layer2: rgb(80,80,80);
+    --layer3: rgb(100,100,100);
+    --layer4: rgb(120,120,120);
 
     --highlight: rgb(221, 221, 221);
     --body-text: rgb(194, 194, 194);
@@ -57,10 +59,6 @@ main {
     bottom: 0;
 }
 
-#create-post {
-    display: none;
-}
- 
 aside {
     background: var(--layer2);
     position: fixed;
@@ -69,10 +67,164 @@ aside {
     right: 0;
     width: 150px;
     bottom: 0;
+    z-index: 5;
+}
+
+#signin, #signup {
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 5px;
+    position: relative;
+    border: var(--highlight) solid 2px;
+    background: var(--layer0);
+    color: inherit;
+}
+
+.div-button {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    border: var(--highlight) solid 2px;
+    background: var(--layer0);
+    color: inherit;
+}
+
+.div-button p {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+.div-button:hover .detail {
+    display: block;
+}
+
+.detail {
+    opacity: .85;
+    padding: 5px;
+    position: absolute;
+    top:100%;
+    right: 0;
+    max-width: initial;
+    width: initial;
+    display: none;
+    font-size:16px;
+    background: var(--layer3);
+}
+
+#account {
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    border-radius: 20px;
+}
+
+#account p {
+    top: 46%;
+}
+
+#toggle-post {
+    font-size: 30px;
+    width: 35px;
+    height: 35px;
+    border-radius: 20px;
+}
+
+#signin, #signup {
+    padding: 5px 8px;
+}
+
+#signin {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+#signup {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#close-post {
+    width: 30px;
+    height: 30px;
+    border-top: none;
+    border-right:none;
+    border-top-right-radius: 30px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.blackdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(0,0,0,.5);
+    z-index: 10;
+}
+
+#create-post {
+    display: none;
+    position: fixed;
+    transform: translateX(-50%);
+    left: 50%;
+    min-width: 300px;
+    max-width: 400px;
+    background: var(--layer1);
+    border: var(--highlight) solid 2px;
+    border-radius: 20px;
+    z-index: 10;
+    padding: 10px;
+    box-shadow: 0 5px 5px black;
+}
+
+#create-post > * {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+#create-post input, #create-post textarea {
+    padding: 10px;
+    background: var(--layer0);
+    font-size: 16px;
+    border: none;
+    color: inherit;
+}
+
+#create-post textarea {
+    max-width: 100%;
+    height: 200px;
 }
 
 #login-form input {
+    margin-bottom: 5px;
+    padding: 5px 10px;
     width: 100%;
+    background: var(--layer0);
+    border: none;
+    color:inherit;
+}
+
+#login-form input::placeholder {
+    color: var(--layer4);
+}
+
+#logout {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--layer0);
+    color: inherit;
+    padding: 5px 15px;
+    border: var(--highlight) solid 2px;
+    border-bottom-left-radius: 20px;
+    border-top: none;
+    border-right: none;
 }
 
 .centered-y {

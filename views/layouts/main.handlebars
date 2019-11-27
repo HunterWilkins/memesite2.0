@@ -18,8 +18,49 @@
     {{{body}}}
     <aside>
     {{#if userId}}
+        <div class="blackdrop">
+            <form id = "create-post" >
+                <div class = "div-button" id = "close-post">
+                    <p>X</p>
+                    
+                </div>
+                <h2>Create a Post</h2>
+                <br>
+                <input type="text" placeholder = "Title">
+                <br>
+                <textarea placeholder = "Body"></textarea>
+                <br>
+                <select id="post-genre">
+                    <option disabled selected>Pick A Genre</option>
+                    <option value="gaming">Gaming</option>
+                    <option value="literature">Literature</option>
+                    <option value="music">Music</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="programming">Programming</option>
+                    <option value="animals">Animals</option>
+                    <option value="film">Film</option>
+                    <option value="tv">TV</option>
+                    <option value="art">Art</option>
+                    <option value="politics">Politics</option>
+                </select>
+                <br>
+                <input type="text" placeholder = "Tags,separated,by,commas" id = "post-tags">
+                <br>
+                <button id = "submit-post">Submit</button>
+            </form>
+        </div>
+
         <button id = "logout">Logout</button>
-        <button id = "toggle-post">Make a Post!</button>
+        <br>
+        <br>
+        <div id = "toggle-post" class = "div-button">
+            <p>+</p>
+            <span class = "detail">Make a Post...</span>
+        </div>
+        <div id = "account" class = "div-button">
+            <p>a</p>
+            <span class = "detail">Account settings...</span>
+        </div>
     {{else}}
         <form id = "login-form">
             <input type="text" placeholder = "Username">

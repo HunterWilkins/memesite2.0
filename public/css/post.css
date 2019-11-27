@@ -27,6 +27,7 @@ header {
 }
 
 #genre {
+    font-style: italic;
     position: absolute;
     opacity: .5;
     top: 0px;

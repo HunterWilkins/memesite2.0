@@ -42,13 +42,18 @@ $(document).ready(function() {
     });
 
     $("#toggle-post").on("click", function() {
+        $(".blackdrop").css({"display": "block"});
         $("#create-post").css({"display": "block"});
     });
 
-    $("#submit-post").on("click", function(event) {
-        let tags = $("input[placeholder = Tags]").val().split(",");
+    $("#close-post").on("click", function() {
+        $(".blackdrop").css({"display": "none"});
+        $("#create-post").css({"display": "none"});
+    })
 
-        event.preventDefault();
+    $("#submit-post").on("click", function(event) {
+        let tags = $("#post-tags").val().split(",");
+
         event.stopImmediatePropagation();    
 
         $.ajax({
@@ -57,8 +62,8 @@ $(document).ready(function() {
             data: {
                 id: postQuantity,
                 title: $("input[placeholder = Title]").val(),
-                body: $("input[placeholder = Body]").val(),
-                genre: $("input[placeholder = Genre]").val(),
+                body: $("textarea[placeholder = Body]").val(),
+                genre: $("#post-genre").val(),
                 tags: tags,
             },
             success: function() {
