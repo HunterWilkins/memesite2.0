@@ -11,6 +11,11 @@
 #my-posts {
     max-height: 300px;
     overflow-y: scroll;
+    color: var(--body-text);
+}
+
+#my-posts h3 {
+    color: var(--highlight);
 }
 
 .my-tag {
