@@ -9,20 +9,20 @@ $(document).ready(function(){
             })
             $("#my-posts").append(
                 `
-                <div class = "my-post">
-                    <h3>${item.title}</h3>
+                <div class = "my-post" data-postId = "${item.id}">
+                    <textarea class = "my-post-title" type = "text" data-field = "title">${item.title}</textarea>
                     <hr>
-                    <p>${item.body}</p>
+                    <textarea class = "my-post-body" data-field = "body">${item.body}</textarea>
                     <hr>
                     <div>
                         ${item.tags.map(tag => {
                             return `<span class = "my-tag" data-tag = "${tag}">
                             ${tag}
-                            <p class = "delete-tag" 
+                            <div class = "delete-tag" 
                                 data-postId = "${item.id}" 
                                 data-tagId = "${item.tags.indexOf(tag)}">
                                     x
-                            </p>
+                            </div>
                             </span>`
                         }).join("")}
                     </div>
@@ -66,6 +66,22 @@ $(document).ready(function(){
 
         $(this).parent().css({"display": "none"});
 
+    });
+
+    $("#my-posts").on("blur", "textarea, input", function() {
+        console.log("Blurring Called...")
+        console.log($(this).val());
+
+        $.ajax({
+            url: "/api/updatePost",
+            method: "PUT",
+            data: {
+                postId: $(this).parent().attr("data-postId"),
+                field: $(this).attr("data-field"),
+                update: $(this).val()
+            }
+
+        })
     })
     
 

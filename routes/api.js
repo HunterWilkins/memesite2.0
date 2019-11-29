@@ -138,6 +138,15 @@ module.exports = function(app) {
             res.sendStatus(200);
             console.log("Removal Successful!");
         }).catch(err => console.log(err));
+    });
+
+    app.put("/api/updatePost", function(req, res) {
+        Post.findOneAndUpdate({
+            id: req.body.postId
+        }, {[req.body.field] : req.body.update}, {new: true, upsert: true})
+        .then(function(dbPost) {
+            res.sendStatus(200);
+        }).catch(err => console.log(err));
     })
 
 
