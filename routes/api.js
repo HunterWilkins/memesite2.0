@@ -35,13 +35,17 @@ module.exports = function(app) {
         }
     })
 
-    app.post("/api/currentUser", function(req, res) {
+    app.get("/api/currentUser", function(req, res) {
         User.findOne({
             id: req.session.userId
         }).then(function(dbUser) {
-            req.session.username = dbUser.username;
-            req.session.userId = dbUser.id;
-            res.sendStatus(200);
+            console.log(dbUser);
+            Post.find({
+                author: dbUser.username
+            }).then(function(dbPosts) {
+                console.log(dbPosts);
+                res.json(dbPosts);
+            });
         }).catch(function(err) {
             res.json(err);
         });
@@ -125,6 +129,15 @@ module.exports = function(app) {
         }).catch(err => {
             console.log(err);
         })
+    });
+
+    app.put("/api/deleteTag", function(req, res) {
+        Post.findOneAndUpdate({
+            id: req.body.postId
+        }, {$pull: {"tags" : req.body.tag}}).then(function(dbPost) {
+            res.sendStatus(200);
+            console.log("Removal Successful!");
+        }).catch(err => console.log(err));
     })
 
 

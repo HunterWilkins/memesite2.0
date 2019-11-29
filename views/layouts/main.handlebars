@@ -13,7 +13,7 @@
 </head>
 <body>
     <nav>
-        <p class = "centered-y">MemeLodge</p>
+        <a href = "/" class = "centered-y">MemeLodge</a>
     </nav>
     {{{body}}}
     <aside>
@@ -57,10 +57,12 @@
             <p>+</p>
             <span class = "detail">Make a Post...</span>
         </div>
-        <div id = "account" class = "div-button">
+        <a href = "/settings" id = "account" class = "div-button">
             <p>a</p>
             <span class = "detail">Account settings...</span>
-        </div>
+        </a>
+
+      
     {{else}}
         <form id = "login-form">
             <input type="text" placeholder = "Username">

@@ -22,6 +22,15 @@ module.exports = function(app) {
             console.log("Not Logged In");
             res.render("frontpage");
         }
+    });
+
+    app.get("/settings", function(req, res) {
+        if (req.session.userId && req.session.username) {
+            res.render("settings", {userId: req.session.userId, username: req.session.username});
+        }
+        else {
+            res.render("frontpage");
+        }
     })
 
     app.get("/posts/:id", function(req, res) {

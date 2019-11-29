@@ -16,6 +16,11 @@
     --text-family:  sans-serif;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 h1 {
     font-size: 30px;
 }
@@ -88,6 +93,9 @@ aside {
     border: var(--highlight) solid 2px;
     background: var(--layer0);
     color: inherit;
+    border-radius: 20px;
+    width: 35px;
+    height: 35px;
 }
 
 .div-button p {
@@ -116,9 +124,6 @@ aside {
 
 #account {
     font-size: 20px;
-    width: 35px;
-    height: 35px;
-    border-radius: 20px;
 }
 
 #account p {
@@ -151,7 +156,9 @@ aside {
     height: 30px;
     border-top: none;
     border-right:none;
-    border-top-right-radius: 30px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0;
     position: absolute;
     top: 0px;
     right: 0px;
@@ -181,6 +188,7 @@ aside {
     z-index: 10;
     padding: 10px;
     box-shadow: 0 5px 5px black;
+    overflow: hidden;
 }
 
 #create-post > * {
@@ -230,6 +238,7 @@ aside {
 
 .centered-y {
     position: relative;
+    display: inline-block;
     transform: translateY(-50%);
     top: 50%;
 }

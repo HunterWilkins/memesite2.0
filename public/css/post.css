@@ -1,6 +1,6 @@
 article {
     position: relative;
-    border-bottom: var(--layer2) 2px solid;
+    /* border-bottom: var(--layer2) 2px solid; */
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
 }
