@@ -1,4 +1,5 @@
 .my-post {
+    position: relative;
     background: var(--layer1);
     display: inline-block;
     color: inherit;
@@ -22,7 +23,7 @@
     color: var(--highlight);
     height:initial;
     font-size: 24px;
-    max-width: 100%;
+    max-width: 90%;
     width: 100%;
     background: inherit;
     border: none;
@@ -61,4 +62,16 @@
     margin-left: 5px;
     padding: 5px 10px;
     text-align:center;
+}
+
+.delete-post {
+    cursor: pointer;
+    position: absolute;
+    border: none;
+    top: 0;
+    right: 0;
+    background:var(--layer2);
+    color:inherit;
+    border-bottom-left-radius: 10px;
+    font-size: 24px;
 }

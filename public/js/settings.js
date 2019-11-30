@@ -4,12 +4,11 @@ $(document).ready(function(){
         console.log(data);
 
         data.forEach(item => {
-            item.tags.forEach(item=>{
-                console.log(item);
-            })
+           
             $("#my-posts").append(
                 `
                 <div class = "my-post" data-postId = "${item.id}">
+                    <button class = "delete-post">🗑</button>
                     <textarea class = "my-post-title" type = "text" data-field = "title">${item.title}</textarea>
                     <hr>
                     <textarea class = "my-post-body" data-field = "body">${item.body}</textarea>
@@ -31,7 +30,7 @@ $(document).ready(function(){
                 `
             )
         })
-    })
+    });
 
     $("#change-username").on("click", function() {
         $.ajax({
@@ -68,6 +67,18 @@ $(document).ready(function(){
 
     });
 
+    $("#my-posts").on("click", ".delete-post", function() {
+        $.ajax({
+            url: "/api/deletePost",
+            method: "DELETE",
+            data: {
+                postId: $(this).parent().attr("data-postId")
+            }
+        });
+
+        $(this).parent().remove();
+    })
+
     $("#my-posts").on("blur", "textarea, input", function() {
         console.log("Blurring Called...")
         console.log($(this).val());
@@ -82,7 +93,8 @@ $(document).ready(function(){
             }
 
         })
-    })
+    });
     
+
 
 });

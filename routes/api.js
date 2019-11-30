@@ -122,8 +122,8 @@ module.exports = function(app) {
 
     });
 
-    app.delete("/api/deletePost/:id", function(req, res) {
-        Post.remove({id: req.params.id})
+    app.delete("/api/deletePost", function(req, res) {
+        Post.deleteOne({id: req.body.postId})
         .then(function() {
             res.sendStatus(200);
         }).catch(err => {
