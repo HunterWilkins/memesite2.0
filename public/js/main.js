@@ -75,4 +75,18 @@ $(document).ready(function() {
         });
 
     });
+
+    $("textarea[placeholder = Body]").on("keydown", function(event) {
+        
+        if (event.keyCode === 9) {
+            event.preventDefault();
+            let cursorPosition = $("textarea[placeholder = Body").prop("selectionStart");
+            let value = $("textarea[placeholder = Body]").val();
+            let textBefore = value.substring(0, cursorPosition);
+            let textAfter = value.substring(cursorPosition, value.length);
+
+            $("textarea[placeholder = Body]").val(textBefore + "\t" + textAfter)
+        }
+    })
+
 });
