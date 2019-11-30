@@ -37,6 +37,10 @@ em {
     font-style: italic;
 }
 
+button {
+    cursor: pointer;
+}
+
 body {
     color: var(--text-color);
     font-family: var(--text-family);

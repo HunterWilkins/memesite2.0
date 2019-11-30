@@ -125,7 +125,9 @@ module.exports = function(app) {
     app.put("/api/createComment", function(req, res) {
         let newComment = {
             author: req.session.username,
-            text: req.body.text
+            text: req.body.text,
+            date: req.body.date,
+            timeCreated: req.body.timeCreated
         }
         Post.findOneAndUpdate({
             id: req.body.postId
