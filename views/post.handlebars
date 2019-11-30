@@ -20,8 +20,16 @@
 
         </div>
     </article>
+    
+    {{#if userId}}
+        <form id="comment-form">
+            <textarea id="comment-body" placeholder = "Comment..."></textarea>
 
-    <section>
+            <button id = "submit-comment">Submit</button>
+        </form>
+    {{/if}}
+
+    <section id = "comments">
 
     </section>
 </main>

@@ -122,6 +122,19 @@ module.exports = function(app) {
 
     });
 
+    app.put("/api/createComment", function(req, res) {
+        let newComment = {
+            author: req.session.username,
+            text: req.body.text
+        }
+        Post.findOneAndUpdate({
+            id: req.body.postId
+        }, {$push : {comments: newComment}})
+        .then(function(dbPost) {
+            res.sendStatus(200);
+        }).catch(err => console.log(err));
+    })
+
     app.delete("/api/deletePost", function(req, res) {
         Post.deleteOne({id: req.body.postId})
         .then(function() {

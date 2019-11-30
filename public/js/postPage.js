@@ -13,8 +13,32 @@ $(document).ready(function() {
                 `
                 <p class = "tag">${item}</p>
                 `
-            )
-        })
+            );
+        });
+        
+        if (data.comments !== undefined) {
+            data.comments.forEach(item => {
+                $("#comments").prepend(
+                    `
+                    <div class = "comment">
+                        <p class = "comment-author"><em>${item.author}</em></p>
+                        <p class = "comment-text">${item.text}</p>
+                    </div>
+                    `
+                )
+            });    
+        }
     });
     
+    $("#submit-comment").on("click", function() {
+        $.ajax({
+            url: "/api/createComment",
+            method: "PUT",
+            data: {
+                postId: window.location.pathname.split("/")[2],
+                text: $("#comment-body").val()
+            }
+        })
+    });
+
 });
