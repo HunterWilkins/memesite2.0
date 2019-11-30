@@ -57,7 +57,6 @@ $(document).ready(function() {
                         
                         <p class = "comment-text">${item.text}</p>
                         ${item.date ? `<p class = "comment-date">${item.date}</p>` : ""}
-                        
                         ${item.timeCreated ? `<p class = "comment-timeElapsed">${timeElapsed.toFixed(0)} ${timeDesc} ago</p>` : ""}
                     </div>
                     `
