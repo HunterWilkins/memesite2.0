@@ -56,9 +56,9 @@ $(document).ready(function() {
                         <p class = "comment-author"><em>${item.author}</em></p>
                         
                         <p class = "comment-text">${item.text}</p>
-                        ${item.date ? <p class = "comment-date">${item.date}</p> : null}
+                        ${item.date ? `<p class = "comment-date">${item.date}</p>` : null}
                         
-                        ${item.timeCreated ? <p class = "comment-timeElapsed">${timeElapsed.toFixed(0)} ${timeDesc} ago</p> : null}
+                        ${item.timeCreated ? `<p class = "comment-timeElapsed">${timeElapsed.toFixed(0)} ${timeDesc} ago</p>` : null}
                     </div>
                     `
                 )
