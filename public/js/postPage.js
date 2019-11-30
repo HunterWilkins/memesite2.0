@@ -57,7 +57,7 @@ $(document).ready(function() {
                     <div class = "comment">
                         <p class = "comment-author"><em>${item.author}</em></p>
                         <br><br>
-                        <p class = "comment-text">${item.text}</p>
+                        <pre class = "comment-text">${item.text}</pre>
                         <br><br>
                         ${item.date ? `<p class = "comment-date">${item.date}</p>` : ""}
                         ${item.timeCreated !== undefined ? `<p class = "comment-timeElapsed">${timeElapsed.toFixed(0)} ${timeDesc} ago</p>` : ""}
@@ -82,5 +82,18 @@ $(document).ready(function() {
             }
         })
     });
+
+    $("#comment-body").on("keydown", function(event) {
+        
+        if (event.keyCode === 9) {
+            event.preventDefault();
+            let cursorPosition = $("#comment-body").prop("selectionStart");
+            let value = $("#comment-body").val();
+            let textBefore = value.substring(0, cursorPosition);
+            let textAfter = value.substring(cursorPosition, value.length);
+
+            $("#comment-body").val(textBefore + "\t" + textAfter)
+        }
+    })
 
 });
