@@ -18,9 +18,11 @@ $(document).ready(function() {
         
         if (data.comments !== undefined) {
             data.comments.forEach(item => {
+                let timeElapsed;
+                let timeDesc;
                 if (item.timeCreated) {
-                    let timeElapsed = (Date.now() - item.timeCreated) / 1000;
-                    let timeDesc = "seconds";
+                    timeElapsed = (Date.now() - item.timeCreated) / 1000;
+                    timeDesc = "seconds";
     
                     if (timeElapsed >= 60) {
                         timeElapsed /= 60;
@@ -54,10 +56,11 @@ $(document).ready(function() {
                     `
                     <div class = "comment">
                         <p class = "comment-author"><em>${item.author}</em></p>
-                        
+                        <br><br>
                         <p class = "comment-text">${item.text}</p>
+                        <br><br>
                         ${item.date ? `<p class = "comment-date">${item.date}</p>` : ""}
-                        ${item.timeCreated ? `<p class = "comment-timeElapsed">${timeElapsed.toFixed(0)} ${timeDesc} ago</p>` : ""}
+                        ${item.timeCreated !== undefined ? `<p class = "comment-timeElapsed">${timeElapsed.toFixed(0)} ${timeDesc} ago</p>` : ""}
                     </div>
                     `
                 )
