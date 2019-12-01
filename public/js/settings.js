@@ -32,10 +32,13 @@ $(document).ready(function(){
         });
 
         data.comments.forEach(item => {
+            console.log(item);
+            console.log(data.posts[item.postId]);
             $("#my-comments").prepend(
                 `
                 <div class = "my-comment">
-                    <p>${item.text}</p>
+                    <p>${item.postTitle}</p>
+                    <p>${item.commentObj.text}</p>
                 </div>
                 <br>
                 `

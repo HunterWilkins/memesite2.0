@@ -46,7 +46,15 @@ module.exports = function(app) {
                 let myComments = [];
                 dbPosts.forEach(post => {
                     post.comments.forEach(comment => {
-                        myComments.push(comment);
+                        if (post.id === comment.postId) {
+                            let commentInfo = {
+                                commentObj: comment,
+                                postTitle: post.title
+                            }
+
+                            myComments.push(commentInfo);
+
+                        }
                     })
                 })
                 console.log(dbPosts);
@@ -136,6 +144,7 @@ module.exports = function(app) {
         let newComment = {
             author: req.session.username,
             text: req.body.text,
+            postId: req.body.postId,
             date: req.body.date,
             timeCreated: req.body.timeCreated
         }
