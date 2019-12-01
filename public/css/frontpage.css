@@ -13,13 +13,22 @@ main {
     background: var(--layer1);
     margin-bottom: 10px;
 }
+.post-title {
+    width: 85%;
+}
 
 .post-genre {
     font-style: italic;
     opacity: .65;
     position: absolute;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align:right;
     top: 10px;
+    font-size: 14px;
     right: 10px;
+    width: 15%;
 }
 
 /* .post-author {

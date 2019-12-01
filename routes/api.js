@@ -43,8 +43,18 @@ module.exports = function(app) {
             Post.find({
                 author: dbUser.username
             }).then(function(dbPosts) {
+                let myComments = [];
+                dbPosts.forEach(post => {
+                    post.comments.forEach(comment => {
+                        myComments.push(comment);
+                    })
+                })
                 console.log(dbPosts);
-                res.json(dbPosts);
+                let response = {
+                    posts: dbPosts,
+                    comments: myComments
+                }
+                res.json(response);
             });
         }).catch(function(err) {
             res.json(err);

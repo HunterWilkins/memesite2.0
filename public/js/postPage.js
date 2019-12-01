@@ -24,18 +24,18 @@ $(document).ready(function() {
                     timeElapsed = (Date.now() - item.timeCreated) / 1000;
                     timeDesc = "seconds";
     
-                    if (timeElapsed >= 60) {
+                    if (timeElapsed >= 60 && timeElapsed < 3600) {
                         timeElapsed /= 60;
                         timeDesc = "minutes";
                     }
     
-                    if (timeElapsed >= 3600) {
-                        timeElapsed /= 60;
+                    else if (timeElapsed >= 3600 && timeElapsed < 86400) {
+                        timeElapsed /= 60*60;
                         timeDesc = "hours";
                     }
     
                     if (timeElapsed >= 86400) {
-                        timeElapsed /= 24;
+                        timeElapsed /= 60*60*24;
                         timeDesc = "days";
                     }
     

@@ -101,6 +101,11 @@ header {
     padding: 5px;
 }
 
+.comment-author, .comment-date, .comment-timeElapsed {
+    font-size: 14px;
+    font-style: italic;
+}
+
 .comment-author {
     position: absolute;
     top: 5px;

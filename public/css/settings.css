@@ -4,12 +4,38 @@
     display: inline-block;
     color: inherit;
     padding: 20px;
-    width: 500px;
+    width: 100%;
    
     margin-bottom: 10px;
 }
 
-#my-posts {
+#toggle-my-posts, #toggle-my-comments {
+    width: 100%;
+    background: var(--layer2);
+    padding: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+#toggle-my-posts > *, #toggle-my-comments > * {
+    display: inline-block;
+}
+
+#toggle-my-posts p, #toggle-my-comments p{
+    width: 80%;
+}
+
+#toggle-my-posts button, #toggle-my-comments button{
+    width: initial;
+    background: inherit;
+    color: inherit;
+    border: none;
+    transition: transform .15s;
+}
+
+
+#my-posts, #my-comments {
+    display: none;
     width: 100%;
     max-height: 300px;
     overflow-y: scroll;
@@ -21,14 +47,13 @@
     resize: none;
     font-family: inherit;
     color: var(--highlight);
-    height:initial;
+    /* height:initial; */
     font-size: 24px;
     max-width: 90%;
     width: 100%;
     background: inherit;
     border: none;
 }
-
 
 .my-post-title::placeholder {
     color: var(--highlight);
@@ -41,6 +66,7 @@
     display:inline-block;
     width: 100%;
     height: 150px;
+    resize: none;
     background: inherit;
     color: var(--body-text);
 }
@@ -52,6 +78,7 @@
     margin-right: 5px;
     margin-bottom: 5px;
     border-radius: 10px;
+    font-size: 14px;
 }
 
 .delete-tag {
@@ -74,4 +101,14 @@
     color:inherit;
     border-bottom-left-radius: 10px;
     font-size: 24px;
+}
+
+.my-comment {
+    padding: 5px;
+    background: var(--layer1);
+}
+
+.my-comment p {
+    text-align:left;
+    white-space: pre-wrap;
 }

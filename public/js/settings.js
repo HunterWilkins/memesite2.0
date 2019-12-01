@@ -3,7 +3,7 @@ $(document).ready(function(){
     $.getJSON("/api/currentUser", function(data) {
         console.log(data);
 
-        data.forEach(item => {
+        data.posts.forEach(item => {
            
             $("#my-posts").append(
                 `
@@ -29,6 +29,17 @@ $(document).ready(function(){
                 <br>
                 `
             );
+        });
+
+        data.comments.forEach(item => {
+            $("#my-comments").prepend(
+                `
+                <div class = "my-comment">
+                    <p>${item.text}</p>
+                </div>
+                <br>
+                `
+            )
         })
     });
 
@@ -95,6 +106,39 @@ $(document).ready(function(){
         })
     });
     
+    $("#toggle-my-posts").on("click", function() {
+        toggleDisplay("#my-posts");
+    });
+
+    $("#toggle-my-comments").on("click", function(){
+        toggleDisplay("#my-comments");
+    });
+
+    function toggleDisplay(element) {
+        let toggler = "#toggle-" + element.slice(1);
+        console.log(toggler);
+        if ($(element).css("display") === "block") {
+            $(element).css({display: "none"});
+            $(toggler + " button").css({transform: "rotateZ(0deg)"});
+        }
+        else {
+            $(element).css({display: "block"});
+
+            $(`${toggler} button`).css({transform: "rotateZ(-90deg)"});
+        }
+
+        switch(element) {
+            case "#my-comments":
+                $("#my-posts").css({display: "none"});
+                $("#toggle-my-posts button").css({transform: "rotateZ(0deg)"});
+                break;
+
+            case "#my-posts":
+                $("#my-comments").css({display: "none"});
+                $("#toggle-my-comments button").css({transform: "rotateZ(0deg)"});
+                break;
+        }
+    }
 
 
 });
