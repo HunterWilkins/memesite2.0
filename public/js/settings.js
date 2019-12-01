@@ -39,6 +39,7 @@ $(document).ready(function(){
                 <div class = "my-comment">
                     <p>${item.postTitle}</p>
                     <p>${item.commentObj.text}</p>
+                    <button class = "delete-comment" data-postId = "${item.commentObj.postId}" data-comment-text = "${item.commentObj.text}">🗑</button>
                 </div>
                 <br>
                 `
@@ -108,6 +109,17 @@ $(document).ready(function(){
 
         })
     });
+
+    $("#my-comments").on("click", ".delete-comment", function() {
+        $.ajax({
+            url: "/api/deleteComment",
+            method: "PUT",
+            data: {
+                text: $(this).attr("data-comment-text"),
+                postId: $(this).attr("data-postId")
+            }
+        })
+    })
     
     $("#toggle-my-posts").on("click", function() {
         toggleDisplay("#my-posts");

@@ -154,6 +154,15 @@ module.exports = function(app) {
         .then(function(dbPost) {
             res.sendStatus(200);
         }).catch(err => console.log(err));
+    });
+
+    app.put("/api/deleteComment", function(req, res) {
+        Post.findOneAndUpdate({
+            id: req.body.postId
+        }, {$pull: {"comments": {"text": req.body.text}}}).then(function(dbPost){
+            console.log("Successfully Deleted Comment.");
+            res.sendStatus(200);
+        }).catch(err => console.log(err));
     })
 
     app.delete("/api/deletePost", function(req, res) {
