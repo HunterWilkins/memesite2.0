@@ -122,6 +122,7 @@ module.exports = function(app) {
                 genre: req.body.genre,
                 tags: req.body.tags,
                 author: dbUser.username,
+                points: 0,
                 comments: []
             }
 
@@ -146,8 +147,10 @@ module.exports = function(app) {
             text: req.body.text,
             postId: req.body.postId,
             date: req.body.date,
-            timeCreated: req.body.timeCreated
+            timeCreated: req.body.timeCreated,
+            id: Math.floor(Math.random()*400000) + req.body.timeCreated + req.body.postId + req.session.username
         }
+        console.log(newComment);
         Post.findOneAndUpdate({
             id: req.body.postId
         }, {$push : {comments: newComment}})
@@ -190,7 +193,37 @@ module.exports = function(app) {
         .then(function(dbPost) {
             res.sendStatus(200);
         }).catch(err => console.log(err));
+    });
+
+    app.put("/api/vote", function(req, res) {
+        if (req.body.value === "+") {
+            Post.findOneAndUpdate({
+                id: req.body.id
+            }, {$inc: {points: 1} }).then(function(dbPost) {
+                res.sendStatus(200);
+                console.log("Upvote!");
+            }).catch(err=>console.log(err));    
+        }
+
+        else if (req.body.value === "-") {
+            Post.findOneAndUpdate({
+                id: req.body.id
+            }, {$inc: {points: -1} }).then(function(dbPost) {
+                res.sendStatus(200);
+                console.log("Downvote!");
+            }).catch(err=>console.log(err));    
+        }
     })
+
+    // app.put("/api/updateComment", function(req, res) {
+    //     Post.findOneAndUpdate({
+    //         id: req.body.postId
+    //     }, {comments:  })
+    //     .then(function(dbPost) {
+    //         console.log("Comment Successfully Updated");
+    //         res.sendStatus(200);
+    //     }).catch(err => console.log(err));
+    // })
 
 
 }

@@ -64,7 +64,7 @@ $(document).ready(function() {
                 title: $("input[placeholder = Title]").val(),
                 body: $("textarea[placeholder = Body]").val(),
                 genre: $("#post-genre").val(),
-                tags: tags,
+                tags: tags
             },
             success: function() {
                 console.log("Success!");

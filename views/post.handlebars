@@ -19,6 +19,14 @@
         <div id="tags">
 
         </div>
+        <div id="points">
+            <p id = "votes"></p>
+            {{#if userId}}
+            <button id="upvote">▲</button>
+            <button id="downvote">▼</button>
+            {{/if}}
+        </div>
+        
     </article>
     <br>
     {{#if userId}}

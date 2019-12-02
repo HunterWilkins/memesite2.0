@@ -32,13 +32,11 @@ $(document).ready(function(){
         });
 
         data.comments.forEach(item => {
-            console.log(item);
-            console.log(data.posts[item.postId]);
             $("#my-comments").prepend(
                 `
-                <div class = "my-comment">
+                <div class = "my-comment" data-commentId = "${item.id}" data-postId = "${item.commentObj.postId}">
                     <p>${item.postTitle}</p>
-                    <p>${item.commentObj.text}</p>
+                    <textarea>${item.commentObj.text}</textarea>
                     <button class = "delete-comment" data-postId = "${item.commentObj.postId}" data-comment-text = "${item.commentObj.text}">🗑</button>
                 </div>
                 <br>
@@ -59,9 +57,6 @@ $(document).ready(function(){
     });
 
     $("#my-posts").on("click", ".delete-tag", function() {
-        console.log("Deleting tag...");
-        console.log($(this).attr("data-tagId"));
-        console.log($(this).parent(".my-tag"));
         $.ajax({
             method: "PUT",
             url: "/api/deleteTag",
@@ -95,9 +90,6 @@ $(document).ready(function(){
     })
 
     $("#my-posts").on("blur", "textarea, input", function() {
-        console.log("Blurring Called...")
-        console.log($(this).val());
-
         $.ajax({
             url: "/api/updatePost",
             method: "PUT",
@@ -117,6 +109,18 @@ $(document).ready(function(){
             data: {
                 text: $(this).attr("data-comment-text"),
                 postId: $(this).attr("data-postId")
+            }
+        })
+    });
+
+    $("#my-comments").on("blur", ".my-comment textarea", function() {
+        $.ajax({
+            url: "/api/updateComment",
+            method: "PUT",
+            data: {
+                text: $(this).val(),
+                commentId: $(this).parent().attr("data-commentId"),
+                postId: $(this).parent().attr("data-postId")
             }
         })
     })

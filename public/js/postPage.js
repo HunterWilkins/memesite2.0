@@ -8,6 +8,7 @@ $(document).ready(function() {
         $("#body").text(data.body);
         $("#author").text("Author: " + data.author);
         $("#genre").text(data.genre);
+        $("#votes").text(data.points);
         data.tags.forEach(item => {
             $("#tags").append(
                 `
@@ -94,6 +95,27 @@ $(document).ready(function() {
 
             $("#comment-body").val(textBefore + "\t" + textAfter)
         }
+    });
+
+    $("#points").on("click", "button", function(event) {
+        event.preventDefault();
+        let value;
+        if ($(this).attr("id") === "upvote") {
+            console.log("+1");
+            value = "+";
+        }
+        else if ($(this).attr("id") === "downvote") {
+            value = "-";
+        }
+
+        $.ajax({
+            url: "/api/vote",
+            method: "PUT",
+            data: {
+                id: window.location.pathname.split("/")[2],
+                value: value
+            }
+        });
     })
 
 });
