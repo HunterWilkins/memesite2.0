@@ -97,7 +97,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#points").on("click", "button", function(event) {
+    $("#points").on("click", ".div-button", function(event) {
         event.preventDefault();
         let value;
         if ($(this).attr("id") === "upvote") {
