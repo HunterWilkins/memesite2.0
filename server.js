@@ -16,7 +16,13 @@ app.use(session({
     secret: "youtubecommentsaren'tthatbad",
     resave: false,
     saveUninitialized: true,
-    store: new MongoStore({mongooseConnection: mongoose.connection}),
+    store: new MongoStore({
+        mongooseConnection: mongoose.connection,
+        clear_interval: (24* 60 * 60 * 1000)
+    }),
+    cookie: {
+        maxAge: (24* 60 * 60 * 1000)
+    }
 }));
 
 const exphbs = require("express-handlebars");
