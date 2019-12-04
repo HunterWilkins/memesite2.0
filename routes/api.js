@@ -58,7 +58,7 @@ module.exports = function(app) {
                         postId: item.id
                     });
                 });
-                
+
                 res.json(results)
             }).catch(err => console.log(err));
         }).catch(err => console.log(err));
@@ -155,7 +155,8 @@ module.exports = function(app) {
                 genre: req.body.genre,
                 tags: req.body.tags,
                 author: dbUser.username,
-                points: 0,
+                upvotes: 0,
+                downvotes: 0,
                 date: date,
                 timeCreated: Date.now(),
                 comments: []
@@ -231,23 +232,17 @@ module.exports = function(app) {
     });
 
     app.put("/api/vote", function(req, res) {
-        if (req.body.value === "+") {
-            Post.findOneAndUpdate({
-                id: req.body.id
-            }, {$inc: {points: 1} }).then(function(dbPost) {
-                res.sendStatus(200);
-                console.log("Upvote!");
-            }).catch(err=>console.log(err));    
-        }
+        
+        vote = req.body.value === "+" ? "upvotes" : "downvotes";
 
-        else if (req.body.value === "-") {
-            Post.findOneAndUpdate({
-                id: req.body.id
-            }, {$inc: {points: -1} }).then(function(dbPost) {
-                res.sendStatus(200);
-                console.log("Downvote!");
-            }).catch(err=>console.log(err));    
-        }
+        console.log(vote);
+        console.log(req.body.id);
+
+        Post.findOneAndUpdate({
+            id: req.body.id
+        }, {$inc: {[vote]: 1}}).then(function(dbPost) {
+            res.sendStatus(200);
+        }).catch(err=>console.log(err));    
     })
 
     app.delete("/api/user/delete", function(req, res) {

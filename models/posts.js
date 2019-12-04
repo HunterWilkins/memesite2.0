@@ -38,7 +38,11 @@ let PostSchema = new Schema ({
         type: Array
     },
 
-    points: {
+    upvotes: {
+        type: Number
+    },
+
+    downvotes : {
         type: Number
     },
 

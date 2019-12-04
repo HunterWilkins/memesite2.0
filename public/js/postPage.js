@@ -60,7 +60,7 @@ $(document).ready(function() {
         if (timeElapsed) {
             $("#time-elapsed").text(timeElapsed.toFixed(0) + " " + timeDesc + " ago");
         }
-        $("#votes").text(data.points);
+        $("#votes").text(data.upvotes - data.downvotes);
 
         data.tags.forEach(item => {
             $("#tags").append(
@@ -163,11 +163,14 @@ $(document).ready(function() {
             $("#votes").text(parseInt($("#votes").text()) - 1);
         }
 
+        let id = window.location.pathname.split("/")[2];
+        let replacedValue = /%20/gi;
+
         $.ajax({
             url: "/api/vote",
             method: "PUT",
             data: {
-                id: window.location.pathname.split("/")[2],
+                id: id.replace(replacedValue, " "),
                 value: value
             }
         });
