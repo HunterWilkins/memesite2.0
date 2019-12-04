@@ -59,7 +59,7 @@ $(document).ready(function() {
             url: "/api/createPost",
             method: "POST",
             data: {
-                id: postQuantity,
+                id: `${Math.floor(Math.random()*2000)}${$("input[placeholder = Title]").val().toLowerCase()}${Date.now().toString().slice(8)}`,
                 title: $("input[placeholder = Title]").val(),
                 body: $("textarea[placeholder = Body]").val(),
                 genre: $("#post-genre").val(),

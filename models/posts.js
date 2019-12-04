@@ -5,7 +5,8 @@ let Schema = mongoose.Schema;
 let PostSchema = new Schema ({
     id: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     
     author: {
