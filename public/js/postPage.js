@@ -57,7 +57,9 @@ $(document).ready(function() {
         $("#author").text("Author: " + data.author);
         $("#genre").text(data.genre);
         $("#date").text(data.date);
-        $("#time-elapsed").text(timeElapsed.toFixed(0) + " " + timeDesc + " ago");
+        if (timeElapsed) {
+            $("#time-elapsed").text(timeElapsed.toFixed(0) + " " + timeDesc + " ago");
+        }
         $("#votes").text(data.points);
 
         data.tags.forEach(item => {
