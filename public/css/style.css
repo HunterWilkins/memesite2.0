@@ -87,6 +87,11 @@ aside {
     z-index: 5;
 }
 
+#controls {
+    position: relative;
+    margin-top: 30px;
+}
+
 #signin, #signup {
     display: inline-block;
     cursor: pointer;
@@ -274,4 +279,40 @@ aside {
 
 .bottom-left, .top-left {
     left: 0;
+}
+
+/* MOBILE VIEW */
+@media only screen and (max-width: 400px) {
+    aside {
+        width: 100%;
+        top: initial;
+        height: 50px;
+    }
+
+    #logout {
+        width: 25%;
+    }
+
+    #controls {
+        width: 75%;
+        margin-top: 0;
+        height: 100%;
+    }
+
+    #controls > *{
+        transform: translateY(-50%);
+        top: 50%;
+        height: 40px;
+        width: 40px;
+    }
+       
+    .div-button:hover .detail {
+        display: none;
+    }
+
+    main {
+        width: 100%;
+    }
+
+
 }
