@@ -311,6 +311,7 @@ aside {
     }
 
     main {
+        bottom: 50px;
         width: 100%;
     }
 

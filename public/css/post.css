@@ -36,7 +36,8 @@ header {
     padding: 5px;
     max-width: 550px;
     margin: 0 auto;
-    white-space: pre-wrap;
+    word-wrap: break-word;
+    white-space: pre-line;
     line-height: 1.5em;
     color: var(--body-text);
 }
@@ -137,4 +138,12 @@ header {
 
 .comment-date {
     bottom: 5px;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 650px) {
+    #comment-form {
+        width: 100%;
+    }
 }
