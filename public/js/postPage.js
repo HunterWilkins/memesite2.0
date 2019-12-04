@@ -174,8 +174,15 @@ $(document).ready(function() {
             data: {
                 id: id.replace(replacedValue, " "),
                 value: value
+            },
+            success: function(data) {
+                let ratio = (((data.upvotes) / (data.upvotes + data.downvotes))*100).toFixed(0) + "%";
+                $("#ratio").text(ratio);
+                $("#ratio-gradient").css({"background": `linear-gradient(90deg, rgb(0,100,0) ${0}, rgb(0,100,0) ${ratio}, rgb(100,0,0) ${ratio}, rgb(100,0,0) 100%)`})
             }
         });
+
+
     })
 
 });

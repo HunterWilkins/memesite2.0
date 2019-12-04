@@ -241,7 +241,7 @@ module.exports = function(app) {
         Post.findOneAndUpdate({
             id: req.body.id
         }, {$inc: {[vote]: 1}}).then(function(dbPost) {
-            res.sendStatus(200);
+            res.json(dbPost);
         }).catch(err=>console.log(err));    
     })
 
