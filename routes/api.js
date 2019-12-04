@@ -72,10 +72,10 @@ module.exports = function(app) {
     app.post("/api/signup", function(req, res) {
         console.log("Signing Up...");
         console.log(req.body);
+        req.session.userId = req.body.id;
         User.create(req.body)
         .then(function(dbUser) {
             console.log(dbUser);
-            req.session.userId = newId;
             req.session.username = dbUser.username;
             res.json(dbUser);
         }).catch(function(err) {
