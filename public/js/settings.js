@@ -45,16 +45,16 @@ $(document).ready(function(){
         })
     });
 
-    $("#change-username").on("click", function() {
-        $.ajax({
-            url: "/api/user/update-username",
-            method: "PUT",
-            data: {
-                username: $("#account-name"),
-                password: $("#account-password")
-            }
-        });
-    });
+    $("#delete-account").on("click", function() {
+        let confirmation = confirm("This will delete your account and all of your posts. Do you want to do that?");
+        if (confirmation) {
+            $.ajax({
+                url: "/api/user/delete",
+                method: "DELETE",
+                success: window.location.reload()
+            });
+        }
+    })
 
     $("#my-posts").on("click", ".delete-tag", function() {
         $.ajax({

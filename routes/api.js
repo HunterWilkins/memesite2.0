@@ -220,15 +220,13 @@ module.exports = function(app) {
         }
     })
 
-    // app.put("/api/updateComment", function(req, res) {
-    //     Post.findOneAndUpdate({
-    //         id: req.body.postId
-    //     }, {comments:  })
-    //     .then(function(dbPost) {
-    //         console.log("Comment Successfully Updated");
-    //         res.sendStatus(200);
-    //     }).catch(err => console.log(err));
-    // })
-
+    app.delete("/api/user/delete", function(req, res) {
+        User.deleteOne({
+            id: req.session.userId
+        }).then(function() {
+            req.session.destroy();
+            res.sendStatus(200);
+        }).catch(err => console.log(err));
+    });
 
 }
