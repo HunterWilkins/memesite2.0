@@ -6,6 +6,7 @@ $(document).ready(function() {
         console.log(data);
         let timeElapsed;
         let timeDesc;
+        let ratio = (((data.upvotes) / (data.upvotes + data.downvotes))*100).toFixed(0) + "%";
 
         if (data.timeCreated) {
             timeElapsed = (Date.now() - data.timeCreated) / 1000;
@@ -61,7 +62,8 @@ $(document).ready(function() {
             $("#time-elapsed").text(timeElapsed.toFixed(0) + " " + timeDesc + " ago");
         }
         $("#votes").text(data.upvotes - data.downvotes);
-
+        $("#ratio").text(ratio);
+        $("#ratio-gradient").css({"background": `linear-gradient(90deg, rgb(0,100,0) ${0}, rgb(0,100,0) ${ratio}, rgb(100,0,0) ${ratio}, rgb(100,0,0) 100%)`})
         data.tags.forEach(item => {
             $("#tags").append(
                 `
