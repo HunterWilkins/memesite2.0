@@ -115,6 +115,9 @@ module.exports = function(app) {
         }, {"$push": {"posts": req.body.id}})
         .then(function(dbUser) {
 
+            let today = new Date();
+            let date = today.getFullYear() + " - " + (today.getMonth() + 1) + " - " + today.getDate();
+
             let newPost = {
                 id: req.body.id,
                 title: req.body.title,
@@ -123,6 +126,8 @@ module.exports = function(app) {
                 tags: req.body.tags,
                 author: dbUser.username,
                 points: 0,
+                date: date,
+                timeCreated: Date.now(),
                 comments: []
             }
 

@@ -240,9 +240,31 @@ aside {
     border-right: none;
 }
 
+/*BASIC POSITIONING CLASSES*/
+
 .centered-y {
     position: relative;
     display: inline-block;
     transform: translateY(-50%);
     top: 50%;
+}
+
+.bottom-right, .bottom-left, .top-right, .top-left {
+    position: absolute;
+}
+
+.bottom-right, .bottom-left {
+    bottom: 0;
+}
+
+.top-right, .top-left {
+    top: 0;
+}
+
+.bottom-right, .top-right {
+    right: 0;
+}
+
+.bottom-left, .top-left {
+    left: 0;
 }

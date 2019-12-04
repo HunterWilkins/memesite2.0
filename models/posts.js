@@ -36,7 +36,16 @@ let PostSchema = new Schema ({
     comments: {
         type: Array
     },
+
     points: {
+        type: Number
+    },
+
+    date: {
+        type: String
+    },
+
+    timeCreated: {
         type: Number
     }
 });

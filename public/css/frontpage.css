@@ -14,21 +14,19 @@ main {
     margin-bottom: 10px;
 }
 .post-title {
-    width: 85%;
+    width: 70%;
 }
 
-.post-genre {
+.post-rightside {
     font-style: italic;
-    opacity: .65;
-    position: absolute;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    text-align:right;
     top: 10px;
     font-size: 14px;
+    opacity: .65;
+    position: absolute;
+    
     right: 10px;
-    width: 15%;
+    text-align:right;
+    width: 30%;
 }
 
 /* .post-author {
