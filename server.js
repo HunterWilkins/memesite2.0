@@ -18,7 +18,8 @@ app.use(session({
     saveUninitialized: true,
     store: new MongoStore({
         mongooseConnection: mongoose.connection,
-        clear_interval: (24* 60 * 60 * 1000)
+        autoRemove: "interval",
+        autoRemoveInterval: (24* 60 * 60 * 1000)
     }),
     cookie: {
         maxAge: (24* 60 * 60 * 1000)
