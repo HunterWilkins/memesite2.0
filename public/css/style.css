@@ -37,6 +37,13 @@ em {
     font-style: italic;
 }
 
+hr {
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-color: var(--text-color);
+}
+
 button {
     cursor: pointer;
 }
