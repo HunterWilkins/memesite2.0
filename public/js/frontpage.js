@@ -59,7 +59,11 @@ $(document).ready(function() {
                         <p class = "post-author"><em>${item.author}</em></p>
                         <div class = "post-rightside">
                             <p class = "post-genre">${item.genre}</p>
+                            ${timeElapsed ? 
                             <p class = "post-time-elapsed">${timeElapsed.toFixed(0)} ${timeDesc} ago</p>
+                            :
+                            " "
+                        }
                         </div>
                     </a>
                     `
