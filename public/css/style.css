@@ -289,6 +289,10 @@ aside {
         height: 50px;
     }
 
+    #login-form input {
+        width: 25%;
+    }
+
     #logout {
         width: 25%;
     }
