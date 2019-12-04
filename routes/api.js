@@ -33,6 +33,36 @@ module.exports = function(app) {
                 res.json(err);
             });    
         }
+    });
+
+    app.get("/api/posts/search/:term", function(req, ram) {
+    
+        let results = {
+            users: [],
+            posts: []
+        }
+
+        User.find({
+            username: req.params.term
+        }).then(function(dbUsers) {
+            dbUsers.forEach(item => {
+                results.users.push(item.username);
+            });
+
+            Post.find({
+                title: req.params.term
+            }).then(function(dbPosts) {
+                dbPosts.forEach(item => {
+                    results.posts.push({
+                        author: item.author,
+                        postId: item.id
+                    });
+                });
+                
+                res.json(results)
+            }).catch(err => console.log(err));
+        }).catch(err => console.log(err));
+
     })
 
     app.get("/api/currentUser", function(req, res) {

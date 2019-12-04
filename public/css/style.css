@@ -261,8 +261,21 @@ aside {
     top: 50%;
 }
 
-.bottom-right, .bottom-left, .top-right, .top-left {
+.bottom-right, 
+.bottom-left, 
+.top-right, 
+.top-left,
+.right,
+.left {
     position: absolute;
+}
+
+.right {
+    right: 5px;
+}
+
+.left {
+    left: 5px;
 }
 
 .bottom-right, .bottom-left {
@@ -280,6 +293,8 @@ aside {
 .bottom-left, .top-left {
     left: 0;
 }
+
+
 
 /* MOBILE VIEW */
 @media only screen and (max-width: 400px) {

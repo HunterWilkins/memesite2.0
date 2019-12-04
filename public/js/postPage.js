@@ -156,9 +156,11 @@ $(document).ready(function() {
         if ($(this).attr("id") === "upvote") {
             console.log("+1");
             value = "+";
+            $("#votes").text(parseInt($("#votes").text()) + 1);
         }
         else if ($(this).attr("id") === "downvote") {
             value = "-";
+            $("#votes").text(parseInt($("#votes").text()) - 1);
         }
 
         $.ajax({

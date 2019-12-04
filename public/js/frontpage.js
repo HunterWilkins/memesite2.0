@@ -80,5 +80,12 @@ $(document).ready(function() {
         window.location.replace(`/frontpage/${$(this).val()}`);
     });
 
+    $("#search").on("click", function() {
+        $.ajax({
+            url: "/api/posts/search/" + $("#search-bar").val(),
+            method: "GET"
+        });
+    })
+
     
 });
