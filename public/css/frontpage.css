@@ -2,6 +2,8 @@ main {
     text-align:center;
 }
 
+
+
 .post {
     text-decoration: none;
     color: inherit;
@@ -34,3 +36,22 @@ main {
     top: 10px;
     left:10px;
 } */
+
+@media only screen and (max-width: 400px) {
+    #genre-picker, #tag-picker, #filter-tags {
+        font-size: 18px;
+    }
+
+    #genre-picker {
+        width: 90%;
+        margin-bottom: 5px;
+    }
+
+    #tag-picker {
+        width: 60%;
+    }
+
+    #filter-tags {
+        width: 30%;
+    }
+}

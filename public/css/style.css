@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
 :root {
     --layer0: rgb(45,45,45);
     --layer1: rgb(60,60,60);
@@ -301,11 +305,16 @@ aside {
     aside {
         width: 100%;
         top: initial;
-        height: 50px;
+        height: 80px;
+    }
+
+    #frontpage-title {
+        margin-top: 10px;
     }
 
     #login-form input {
-        width: 25%;
+        width: 45%;
+        font-size: 16px;
     }
 
     #logout {
