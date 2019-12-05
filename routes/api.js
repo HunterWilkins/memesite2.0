@@ -14,28 +14,31 @@ module.exports = function(app) {
     
     });
 
-    app.get("/api/posts/:genre", function(req, res) {
-        if (req.params.genre === "all") {
-            Post.find({})
-            .then(function(dbPosts) {
+    app.post("/api/posts/:genre", function(req, res) {
+        Post.find(req.params.genre === "all" ? {} : {genre: req.params.genre})
+        .then(function(dbPosts) {
+            let resultingPosts = [];
+            console.log(req.body.tags);
+            let tags = req.body.tags ? req.body.tags.split(",") : null;
+            if (tags) {
+                dbPosts.forEach(post => {
+                    tags.forEach(item => {
+                        if (post.tags.indexOf(item) !== -1) {
+                            resultingPosts.push(post);
+                        };
+                    });
+                });
+                res.json(resultingPosts);
+            }
+            else {
                 res.json(dbPosts);
-            }).catch(function(err) {
-                res.json(err);
-            });    
-        }
-        
-        else {
-            Post.find({
-                genre: req.params.genre
-            }).then(function(dbPosts) {
-                res.json(dbPosts);
-            }).catch(function(err) {
-                res.json(err);
-            });    
-        }
+            }
+        }).catch(function(err) {
+            res.json(err);
+        });    
     });
 
-    app.get("/api/posts/search/:term", function(req, ram) {
+    app.post("/api/posts/search/:term", function(req, ram) {
     
         let results = {
             users: [],
