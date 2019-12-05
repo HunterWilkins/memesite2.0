@@ -2,7 +2,16 @@ $(document).ready(function() {
     let user;
     let postQuantity = 0;
 
-    
+
+    $("#show-account").on("click", function() {
+        if ($("#login-form").css("display") !== "block") {
+            $("#login-form").css({display: "block"});
+        }
+
+        else {
+            $("#login-form").css({display: "none"});
+        }
+    })
 
     $("#login-form").on("click", "button", function() {
         event.preventDefault();
@@ -84,6 +93,6 @@ $(document).ready(function() {
 
             $("textarea[placeholder = Body]").val(textBefore + "\t" + textAfter)
         }
-    })
+    });
 
 });

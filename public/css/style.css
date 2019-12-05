@@ -91,6 +91,13 @@ aside {
     z-index: 5;
 }
 
+#show-account {
+    display: none;
+    position: absolute;
+    right: 5px;
+    font-size: 18px;
+}
+
 #controls {
     position: relative;
     margin-top: 30px;
@@ -305,7 +312,22 @@ aside {
     aside {
         width: 100%;
         top: initial;
-        height: 80px;
+        height: 50px;
+    }
+
+    #show-account {
+        display: block;
+    }
+
+    #login-form {
+        display: none;
+        position: fixed;
+        padding: 5px;
+        bottom: 50px;
+        right: 0;
+        width: 50%;
+        background: var(--layer3);
+        box-shadow: 0px 5px 5px black;
     }
 
     #frontpage-title {
@@ -313,7 +335,11 @@ aside {
     }
 
     #login-form input {
-        width: 45%;
+        width: 100%;
+        font-size: 18px;
+    }
+
+    #login-form button {
         font-size: 16px;
     }
 
