@@ -63,7 +63,7 @@ $(document).ready(function() {
         }
         $("#votes").text((data.upvotes) + " / " + (data.upvotes + data.downvotes));
         $("#ratio").text(ratio !== "NaN" ? ratio + "%" : "");
-        $("#ratio-gradient").css({"background": `linear-gradient(90deg, rgb(0,100,0) ${0}, rgb(0,100,0) ${ratio}, rgb(100,0,0) ${ratio}, rgb(100,0,0) 100%)`})
+        $("#ratio-gradient").css({"background": `linear-gradient(90deg, rgb(0,100,0) ${0}, rgb(0,100,0) ${ratio}%, rgb(100,0,0) ${ratio}%, rgb(100,0,0) 100%)`})
       
         data.tags.forEach(item => {
             $("#tags").append(
