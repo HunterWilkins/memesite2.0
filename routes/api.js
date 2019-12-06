@@ -238,12 +238,9 @@ module.exports = function(app) {
         
         vote = req.body.value === "+" ? "upvotes" : "downvotes";
 
-        console.log(vote);
-        console.log(req.body.id);
-
         Post.findOneAndUpdate({
             id: req.body.id
-        }, {$inc: {[vote]: 1}}).then(function(dbPost) {
+        }, {$inc: {[vote]: 1}}, {useFindAndModify: false}).then(function(dbPost) {
             res.json(dbPost);
         }).catch(err=>console.log(err));    
     })

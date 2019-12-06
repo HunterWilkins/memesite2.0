@@ -113,6 +113,19 @@ aside {
     color: inherit;
 }
 
+#filters {
+    display: none;
+    margin-top: 5px;
+    width: 100%;
+    background: var(--layer0);
+    z-index: 10;
+    padding: 5px;
+}
+
+#filters > * {
+    max-width: 100%;
+}
+
 .div-button {
     display: inline-block;
     position: relative;

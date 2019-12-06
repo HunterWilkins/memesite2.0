@@ -1,6 +1,5 @@
 $(document).ready(function() {
-
-
+    $("#filters").css({display: "block"});
     let postQuantity = 0;
     let pageGenre = window.location.pathname.split("/")[2];
     let pageTags = window.location.pathname.split("/")[3];
@@ -46,7 +45,12 @@ $(document).ready(function() {
         
                         if (timeElapsed >= 86400) {
                             timeElapsed /= 60*60*24;
-                            timeDesc = "days";
+                            if (timeElapsed <= 2) {
+                                timeDesc = "day";
+                            }
+                            else {
+                                timeDesc = "days";
+                            }
                         }
         
                         if (timeDesc === "days" && timeElapsed >= 30) {

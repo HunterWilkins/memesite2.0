@@ -6,8 +6,8 @@ $(document).ready(function() {
         console.log(data);
         let timeElapsed;
         let timeDesc;
-        let ratio = (((data.upvotes) / (data.upvotes + data.downvotes))*100).toFixed(0) + "%";
-
+        let ratio = (((data.upvotes) / (data.upvotes + data.downvotes))*100).toFixed(0);
+        console.log(ratio);
         if (data.timeCreated) {
             timeElapsed = (Date.now() - data.timeCreated) / 1000;
             timeDesc = "seconds";
@@ -61,9 +61,10 @@ $(document).ready(function() {
         if (timeElapsed) {
             $("#time-elapsed").text(timeElapsed.toFixed(0) + " " + timeDesc + " ago");
         }
-        $("#votes").text(data.upvotes - data.downvotes);
-        $("#ratio").text(ratio);
+        $("#votes").text((data.upvotes) + " / " + (data.upvotes + data.downvotes));
+        $("#ratio").text(ratio !== "NaN" ? ratio + "%" : "");
         $("#ratio-gradient").css({"background": `linear-gradient(90deg, rgb(0,100,0) ${0}, rgb(0,100,0) ${ratio}, rgb(100,0,0) ${ratio}, rgb(100,0,0) 100%)`})
+      
         data.tags.forEach(item => {
             $("#tags").append(
                 `
@@ -126,12 +127,14 @@ $(document).ready(function() {
     
     $("#submit-comment").on("click", function() {
         let today = new Date();
+        let replacedValue = /%20/gi;
+
         let date = today.getFullYear() + " - " + (today.getMonth() + 1) + " - " + today.getDate();
         $.ajax({
             url: "/api/createComment",
             method: "PUT",
             data: {
-                postId: window.location.pathname.split("/")[2],
+                postId: window.location.pathname.split("/")[2].replace(replacedValue, " "),
                 text: $("#comment-body").val(),
                 date: date,
                 timeCreated: Date.now()
@@ -158,11 +161,9 @@ $(document).ready(function() {
         if ($(this).attr("id") === "upvote") {
             console.log("+1");
             value = "+";
-            $("#votes").text(parseInt($("#votes").text()) + 1);
         }
         else if ($(this).attr("id") === "downvote") {
             value = "-";
-            $("#votes").text(parseInt($("#votes").text()) - 1);
         }
 
         let id = window.location.pathname.split("/")[2];
@@ -177,7 +178,8 @@ $(document).ready(function() {
             },
             success: function(data) {
                 let ratio = (((data.upvotes) / (data.upvotes + data.downvotes))*100).toFixed(0) + "%";
-                $("#ratio").text(ratio);
+                $("#ratio").text(ratio !== "NaN" ? ratio + "%" : "");
+                $("#votes").text((data.upvotes) + " / " + (data.upvotes + data.downvotes));
                 $("#ratio-gradient").css({"background": `linear-gradient(90deg, rgb(0,100,0) ${0}, rgb(0,100,0) ${ratio}, rgb(100,0,0) ${ratio}, rgb(100,0,0) 100%)`})
             }
         });
