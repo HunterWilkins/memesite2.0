@@ -66,7 +66,7 @@ module.exports = function(app) {
             }).catch(err => console.log(err));
         }).catch(err => console.log(err));
 
-    })
+    });
 
     app.get("/api/currentUser", function(req, res) {
         User.findOne({
@@ -198,6 +198,30 @@ module.exports = function(app) {
         }).catch(err => console.log(err));
     });
 
+    app.put("/api/updateComment", function(req, res){
+        console.log("Updating Comment...");
+        console.log(req.body);
+        Post.findOneAndUpdate({
+            id: req.body.postId    
+        }, {$set: {"comments.$[comment].text" : req.body.text}}, 
+        {
+            arrayFilters: [{"comment.id" : req.body.commentId}],
+            new: true
+        }
+        
+        ).then(function(dbPost) {
+            console.log(dbPost);
+            console.log(dbPost.comments);
+            dbPost.comments.forEach(item => {
+                if (item.id === req.body.commentId) {
+                    item.textt = req.body.text
+                }
+            });
+            res.json(dbPost);
+        }).catch(err => console.log(err));
+        
+    })
+
     app.put("/api/deleteComment", function(req, res) {
         Post.findOneAndUpdate({
             id: req.body.postId
@@ -205,7 +229,7 @@ module.exports = function(app) {
             console.log("Successfully Deleted Comment.");
             res.sendStatus(200);
         }).catch(err => console.log(err));
-    })
+    });
 
     app.delete("/api/deletePost", function(req, res) {
         Post.deleteOne({id: req.body.postId})
@@ -243,7 +267,7 @@ module.exports = function(app) {
         }, {$inc: {[vote]: 1}}, {useFindAndModify: false}).then(function(dbPost) {
             res.json(dbPost);
         }).catch(err=>console.log(err));    
-    })
+    });
 
     app.delete("/api/user/delete", function(req, res) {
         User.deleteOne({
