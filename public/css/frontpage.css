@@ -9,13 +9,15 @@ main {
     background: var(--layer0);
     z-index: 10;
     padding: 5px;
-
 }
 
 #filters > * {
     max-width: 100%;
 }
 
+#frontpage-title {
+    margin-bottom: 10px;
+}
 
 #genre-select {
     border: var(--layer3) solid 2px;
@@ -111,10 +113,11 @@ main {
         display: none;
         top: initial;
         position: fixed;
-        bottom: 50px;
+        bottom: 70px;
         height: initial;
         transform: none;
         width: 100%;
+        text-align:center;
         transform: translateX(-50%);
         left: 50%;
         border-top: var(--layer4) solid 2px;

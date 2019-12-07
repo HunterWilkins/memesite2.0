@@ -326,7 +326,7 @@ aside {
     aside {
         width: 100%;
         top: initial;
-        height: 50px;
+        height: 70px;
     }
 
     #create-post {
@@ -355,6 +355,10 @@ aside {
 
     #show-account {
         display: block;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        font-size: 30px;
     }
 
     #login-form {
@@ -389,17 +393,20 @@ aside {
         width: 75%;
         margin-top: 0;
         height: 100%;
+        text-align:left;
     }
 
     #filters {
         display: none;
     }
 
-    #controls > *{
+    #controls > .div-button{
         transform: translateY(-50%);
         top: 50%;
-        height: 40px;
-        width: 40px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50px;
+        font-size: 30px;
     }
        
     .div-button:hover .detail {
@@ -407,7 +414,7 @@ aside {
     }
 
     main {
-        bottom: 50px;
+        bottom: 70px;
         width: 100%;
     }
 
