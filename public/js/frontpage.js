@@ -92,6 +92,15 @@ $(document).ready(function() {
         window.location.replace(`/frontpage/${$(this).val()}`);
     });
 
+    $("#genre-select").on("click", function() {
+        if ($("#genres").css("display") === "none") {
+            $("#genres").css({display: "block"});
+        }
+        else {
+            $("#genres").css({display: "none"});
+        }
+    })
+
     $("#filter-tags").on("click", function(){
         $.ajax({
             url:`/api/posts/${$("#genre-picker").val()}`,

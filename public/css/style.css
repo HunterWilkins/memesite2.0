@@ -48,6 +48,10 @@ hr {
     border-color: var(--text-color);
 }
 
+input {
+    max-width: 100%;
+}
+
 button {
     cursor: pointer;
 }
@@ -150,7 +154,7 @@ aside {
 }
 
 .detail {
-    opacity: .85;
+    opacity: .95;
     padding: 5px;
     position: absolute;
     top:100%;
@@ -160,6 +164,7 @@ aside {
     display: none;
     font-size:16px;
     background: var(--layer3);
+    z-index: 20;
 }
 
 #account {
@@ -316,6 +321,10 @@ aside {
 
 .bottom-left, .top-left {
     left: 0;
+}
+
+.relative {
+    position: relative;
 }
 
 

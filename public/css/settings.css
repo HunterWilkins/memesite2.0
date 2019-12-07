@@ -53,7 +53,6 @@
     color: var(--highlight);
     /* height:initial; */
     font-size: 24px;
-    max-width: 90%;
     width: 100%;
     background: inherit;
     border: none;
@@ -63,7 +62,7 @@
     color: var(--highlight);
 }
 
-.my-post-body {
+.my-post-body, .my-comment textarea {
     font-family: inherit;
     font-size: inherit;
     line-height: 1.5em;
@@ -95,7 +94,7 @@
     text-align:center;
 }
 
-.delete-post {
+.delete-post, .delete-comment {
     cursor: pointer;
     position: absolute;
     border: none;
@@ -108,11 +107,18 @@
 }
 
 .my-comment {
+    position: relative;
     padding: 5px;
     background: var(--layer1);
 }
 
+.my-comment textarea {
+    min-height: 1em;
+    height: initial;
+}
+
 .my-comment p {
+    padding: 10px 0px;
     text-align:left;
     white-space: pre-wrap;
 }

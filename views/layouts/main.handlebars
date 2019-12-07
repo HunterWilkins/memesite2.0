@@ -66,7 +66,6 @@
                 <span class = "detail">Account settings...</span>
             </a>
         </div>
-        
       
     {{else}}
         <div class="div-button centered-y" id = "show-account">
@@ -80,22 +79,27 @@
         </form>
     {{/if}}
         <div id="filters">
-            <select name="genre" id="genre-picker">
-                <option disabled selected>Genres</option>
-                <option value="all">All</option>
-                <option value="gaming">Gaming</option>
-                <option value="literature">Literature</option>
-                <option value="music">Music</option>
-                <option value="comedy">Comedy</option>
-                <option value="programming">Programming</option>
-                <option value="animals">Animals</option>
-                <option value="film">Film</option>
-                <option value="tv">TV</option>
-                <option value="art">Art</option>
-                <option value="politics">Politics</option>
-            </select>
-
-            <input type="text" id="tag-picker" placeholder = "Tags, tags, tags...">
+            <div id="genre-select">
+                <p>Select Genre</p>
+                <div id="genres">
+                    <hr>
+                    <a href = "/frontpage/all">All</a>
+                    <a href = "/frontpage/gaming">Gaming</a>
+                    <a href = "/frontpage/literature">Literature</a>
+                    <a href = "/frontpage/music">Music</a>
+                    <a href = "/frontpage/comedy">Comedy</a>
+                    <a href = "/frontpage/programming">Programming</a>
+                    <a href = "/frontpage/animals">Animals</a>
+                    <a href = "/frontpage/film">Film</a>
+                    <a href = "/frontpage/tv">TV</a>
+                    <a href = "/frontpage/art">Art</a>
+                    <a href = "/frontpage/politics">Politics</a>
+                </div>
+            </div>
+            <div class = "relative" id = "tags-box">
+                <input type="text" id="tag-picker" placeholder = "Tags, tags, tags...">
+                <span class = "detail">Separate tags with commas.</span>
+            </div>
             <button id = "filter-tags">Filter</button>
         </div>
 </aside>
