@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    $("#filters").css({display: "block"});
     let postQuantity = 0;
     let pageGenre = window.location.pathname.split("/")[2];
     let pageTags = window.location.pathname.split("/")[3];
@@ -99,6 +98,15 @@ $(document).ready(function() {
         else {
             $("#genres").css({display: "none"});
         }
+    });
+
+    $("#toggle-filters").on("click", function() {
+        if ($("#filters").css("display") === "none") {
+            $("#filters").css("display", "block");
+        }
+        else {
+            $("#filters").css("display", "none");
+        }
     })
 
     $("#filter-tags").on("click", function(){
@@ -174,7 +182,7 @@ $(document).ready(function() {
                 }
             }
         });
-    })
+    });
 
     $("#search").on("click", function() {
         $.ajax({

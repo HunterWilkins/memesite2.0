@@ -117,18 +117,10 @@ aside {
     color: inherit;
 }
 
-#filters {
+#filters, #toggle-filters {
     display: none;
-    margin-top: 5px;
-    width: 100%;
-    background: var(--layer0);
-    z-index: 10;
-    padding: 5px;
 }
 
-#filters > * {
-    max-width: 100%;
-}
 
 .div-button {
     display: inline-block;
@@ -337,6 +329,30 @@ aside {
         height: 50px;
     }
 
+    #create-post {
+        width: 100%;
+        min-width: initial;
+        max-width: initial;
+        top: 50%;
+        border-radius: 0;
+        left: initial;
+        border-right: none;
+        border-left: none;
+        transform: translateY(-50%);
+    }
+
+    #create-post textarea {
+        width: 95%;
+    }
+
+    #submit-post, #post-genre {
+        font-size: 18px;
+    }
+
+    #close-post {
+        border-radius: 0;
+    }
+
     #show-account {
         display: block;
     }
@@ -373,6 +389,10 @@ aside {
         width: 75%;
         margin-top: 0;
         height: 100%;
+    }
+
+    #filters {
+        display: none;
     }
 
     #controls > *{

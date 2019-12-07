@@ -2,6 +2,21 @@ main {
     text-align:center;
 }
 
+#filters {
+    display: block;
+    margin-top: 5px;
+    width: 100%;
+    background: var(--layer0);
+    z-index: 10;
+    padding: 5px;
+
+}
+
+#filters > * {
+    max-width: 100%;
+}
+
+
 #genre-select {
     border: var(--layer3) solid 2px;
     padding: 5px;
@@ -23,8 +38,8 @@ main {
     top: 108%;
     left: 0;
     width: 100%;
-    background: var(--layer0);
     z-index: 14;
+    background: var(--layer0);
 }
 
 #genres a {
@@ -92,9 +107,44 @@ main {
         font-size: 16px;
     }
 
-    #genre-picker {
-        width: 90%;
-        margin-bottom: 5px;
+    #filters {
+        display: none;
+        top: initial;
+        position: fixed;
+        bottom: 50px;
+        height: initial;
+        transform: none;
+        width: 100%;
+        transform: translateX(-50%);
+        left: 50%;
+        border-top: var(--layer4) solid 2px;
+        box-shadow: 0 -10px 20px black;
+    }
+
+    #genres {
+        text-align:center;
+        top: initial;
+        bottom: 108%;
+        width: 80%;
+        transform: translateX(-50%);
+        left: 50%;
+        box-shadow: 0 0 20px black;
+        border-left: var(--highlight) solid 2px;
+        border-right: var(--highlight) solid 2px;
+        
+    }
+
+    #genres a {
+        font-size: 20px;
+        background: var(--layer3);
+    }
+
+    #tag-picker {
+        font-size: 18px;
+    }
+
+    #toggle-filters {
+        display: inline-block;
     }
 
     #tag-picker {
