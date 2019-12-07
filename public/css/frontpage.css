@@ -117,7 +117,7 @@ main {
         height: initial;
         transform: none;
         width: 100%;
-        text-align:center;
+        text-align: center;
         transform: translateX(-50%);
         left: 50%;
         border-top: var(--layer4) solid 2px;
@@ -156,5 +156,9 @@ main {
 
     #filter-tags {
         width: 30%;
+    }
+
+    #tags-box:hover .detail {
+        display: none;
     }
 }
