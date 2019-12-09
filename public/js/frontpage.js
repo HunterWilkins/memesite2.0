@@ -66,7 +66,7 @@ $(document).ready(function() {
                     $("#posts").prepend(
                         `<a class = "post" href = "/posts/${item.id}">
                             <p class = "post-title">${item.title}</p>
-                            <p class = "post-author"><em>${item.author}</em></p>
+                            <p class = "post-author">${item.author}</p>
                             <div class = "post-rightside">
                                 <p class = "post-genre">${item.genre}</p>
                                 ${timeElapsed ? 

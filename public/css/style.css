@@ -6,10 +6,23 @@ html {
     -webkit-text-size-adjust: 100%;
 }
 
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    width: 4px;
+    background: inherit;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--highlight);
+}
+
 :root {
-    --layer0: rgb(45,45,45);
-    --layer1: rgb(60,60,60);
-    --layer2: rgb(80,80,80);
+    --layer0: rgb(33, 32, 37);
+    --layer1: rgb(47, 52, 59);
+    --layer2: rgb(62, 74, 82);
     --layer3: rgb(100,100,100);
     --layer4: rgb(120,120,120);
 
@@ -24,6 +37,7 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
 
 h1 {
     font-size: 30px;
@@ -209,7 +223,7 @@ aside {
     left: 0;
     right: 0;
     background: rgb(0,0,0,.5);
-    z-index: 10;
+    z-index: 25;
 }
 
 #create-post {
@@ -222,7 +236,7 @@ aside {
     background: var(--layer1);
     border: var(--highlight) solid 2px;
     border-radius: 20px;
-    z-index: 10;
+    z-index: 30;
     padding: 10px;
     box-shadow: 0 5px 5px black;
     overflow: hidden;

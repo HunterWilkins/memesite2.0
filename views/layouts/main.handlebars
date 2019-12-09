@@ -27,11 +27,11 @@
             <form id = "create-post" >
                 <div class = "div-button" id = "close-post">
                     <p>X</p>
-                    
                 </div>
+
                 <h2>Create a Post</h2>
                 <br>
-                <input type="text" placeholder = "Title">
+                <input type="text" placeholder = "Title" maxlength = "80">
                 <br>
                 <textarea placeholder = "Body"></textarea>
                 <br>
@@ -99,12 +99,13 @@
 
         </div>
     {{#if userId}}
-        <button id = "logout">Logout</button>
-        
+        <button id = "logout">Logout</button> 
     {{else}}
         <div class="div-button centered-y" id = "show-account">
             <p>☰</p>
         </div>
+
+        <br>
 
         <form id = "login-form">
             <input type="text" placeholder = "Username">

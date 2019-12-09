@@ -31,7 +31,7 @@ app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
 mongoose.connect(MONGODB_URI, {useNewUrlParser: true , useUnifiedTopology: true });
-
+mongoose.set("useCreateIndex", true);
 // Routes
 require("./routes/api.js")(app);
 require("./routes/html.js")(app);

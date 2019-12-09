@@ -1,5 +1,18 @@
+header {
+    position: relative;
+    height: 50px;
+}
+
+header > * {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+}
 #delete-account {
+    position: absolute;
+    right: 5px;
     font-size: 28px;
+   
 }
 
 .my-post {
@@ -45,6 +58,7 @@
     overflow-y: scroll;
     color: var(--body-text);
     text-align:center;
+    margin-bottom: 10px;
 }
 
 .my-post-title{

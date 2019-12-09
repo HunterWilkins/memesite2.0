@@ -6,7 +6,7 @@ main {
     display: block;
     margin-top: 5px;
     width: 100%;
-    background: var(--layer0);
+    background: var(--layer1);
     z-index: 10;
     padding: 5px;
 }
@@ -22,6 +22,7 @@ main {
 #genre-select {
     border: var(--layer3) solid 2px;
     padding: 5px;
+    background: var(--layer0);
     border-radius: 15px;
     margin-bottom: 5px;
     cursor: pointer;
@@ -66,7 +67,7 @@ main {
 #filter-tags {
     border-radius: 15px;
     border: var(--layer3) solid 2px;
-    background: inherit;
+    background: var(--layer0);
     padding: 2px 14px;
     font-size: inherit;
     color: inherit;
@@ -88,7 +89,13 @@ main {
     margin-bottom: 10px;
 }
 .post-title {
-    width: 70%;
+    font-size: 20px;
+    width: 65%;
+}
+
+.post-author {
+    opacity: .75;
+    margin-top: 10px;
 }
 
 .post-rightside {
@@ -100,7 +107,7 @@ main {
     
     right: 10px;
     text-align:right;
-    width: 30%;
+    width: 35%;
 }
 
 
@@ -139,7 +146,7 @@ main {
 
     #genres a {
         font-size: 20px;
-        background: var(--layer3);
+        background: var(--layer2);
     }
 
     #tag-picker {
