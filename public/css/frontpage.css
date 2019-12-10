@@ -133,6 +133,7 @@ main {
         display: block;
         margin: 0 auto 10px auto;
         border: var(--layer3) solid 2px;
+        border-radius: 50px;
         background: inherit;
         color: var(--text-color);
     }
