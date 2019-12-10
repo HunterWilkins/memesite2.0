@@ -2,12 +2,10 @@ $(document).ready(function() {
     let postQuantity = 0;
     let pageGenre = window.location.pathname.split("/")[2];
     let pageTags = window.location.pathname.split("/")[3];
-    if (pageGenre) {
-        $("#genre-picker").val(window.location.pathname.split("/")[2]);
+    if (!pageGenre) {
+        pageGenre = "all"
     }
-    else {
-        pageGenre = "all";
-    }
+
 
     $.ajax({
         url:`/api/posts/${pageGenre ? pageGenre : "all"}`,
