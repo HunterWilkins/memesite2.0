@@ -52,7 +52,7 @@ main {
 }
 
 #genres a:hover {
-    background: var(--layer1);
+    background: var(--layer4);
 }
 
 #tag-picker {
@@ -86,7 +86,12 @@ main {
     width: 90%;
     text-align:left;
     background: var(--layer1);
+    border: var(--layer1) solid 2px;
     margin-bottom: 10px;
+}
+
+.post:hover {
+    border-color: var(--layer4);
 }
 .post-title {
     font-size: 20px;
@@ -146,7 +151,7 @@ main {
 
     #genres a {
         font-size: 20px;
-        background: var(--layer2);
+        background: var(--layer4);
     }
 
     #tag-picker {

@@ -18,8 +18,8 @@ header {
 }
 
 #title {
-    color: var(--highlight);
-    text-overflow: ellipsis;
+    color: var(--text-color);
+    margin-bottom: 10px;
 }
 
 #genre {
@@ -132,7 +132,7 @@ header {
 }
 
 .comment-text {
-    color: var(--highlight);
+    color: var(--body-text);
     white-space: pre-wrap;
 }
 

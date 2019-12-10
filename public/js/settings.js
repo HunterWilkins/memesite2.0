@@ -93,6 +93,22 @@ $(document).ready(function(){
                     "--text-color": "white",
                     "--text-family":  "sans-serif",
                 }
+                break;
+            case "Gold Chip": 
+                newTheme = {
+                    "--layer0": "rgb(18, 18, 19)",
+                    "--layer1": "rgb(31, 31, 34)",
+                    "--layer2": "rgb(35, 36, 39)",
+                    "--layer3": "rgb(141, 134, 76)",
+                    "--layer4": "rgb(141, 134, 76)",
+
+                    "--highlight": "rgb(255, 246, 209)",
+                    "--body-text": "rgb(194, 194, 194)",
+
+                    "--text-color": "white",
+                    "--text-family":  `"Lucidia Console", Monaco, monospace`,
+                }
+                break;
             default: break;
 
         }

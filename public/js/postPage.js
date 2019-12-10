@@ -62,7 +62,7 @@ $(document).ready(function() {
             $("#time-elapsed").text(timeElapsed.toFixed(0) + " " + timeDesc + " ago");
         }
         $("#votes").text((data.upvotes) + " / " + (data.upvotes + data.downvotes));
-        $("#ratio").text(ratio !== "NaN" ? ratio + "%" : "");
+        $("#ratio").text(ratio !== "NaN" ? `${ratio}%` : "");
         $("#ratio-gradient").css({"background": `linear-gradient(90deg, rgb(0,100,0) ${0}, rgb(0,100,0) ${ratio}%, rgb(100,0,0) ${ratio}%, rgb(100,0,0) 100%)`})
       
         data.tags.forEach(item => {
@@ -177,10 +177,10 @@ $(document).ready(function() {
                 value: value
             },
             success: function(data) {
-                let ratio = (((data.upvotes) / (data.upvotes + data.downvotes))*100).toFixed(0) + "%";
-                $("#ratio").text(ratio !== "NaN" ? ratio + "%" : "");
+                let ratio = (((data.upvotes) / (data.upvotes + data.downvotes))*100).toFixed(0);
+                $("#ratio").text(ratio !== "NaN" ? `${ratio}%` : "");
                 $("#votes").text((data.upvotes) + " / " + (data.upvotes + data.downvotes));
-                $("#ratio-gradient").css({"background": `linear-gradient(90deg, rgb(0,100,0) ${0}, rgb(0,100,0) ${ratio}, rgb(100,0,0) ${ratio}, rgb(100,0,0) 100%)`})
+                $("#ratio-gradient").css({"background": `linear-gradient(90deg, rgb(0,100,0) ${0}, rgb(0,100,0) ${ratio}%, rgb(100,0,0) ${ratio}%, rgb(100,0,0) 100%)`})
             }
         });
 
