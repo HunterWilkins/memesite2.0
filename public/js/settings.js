@@ -34,10 +34,10 @@ $(document).ready(function(){
         data.comments.forEach(item => {
             $("#my-comments").prepend(
                 `
-                <div class = "my-comment" data-commentId = "${item.commentObj.id}" data-postId = "${item.commentObj.postId}">
+                <div class = "my-comment" data-commentId = "${item.id}" data-postId = "${item.postId}">
                     <p>${item.postTitle}</p>
-                    <textarea>${item.commentObj.text}</textarea>
-                    <button class = "delete-comment" data-postId = "${item.commentObj.postId}" data-comment-text = "${item.commentObj.text}">🗑</button>
+                    <textarea>${item.text}</textarea>
+                    <button class = "delete-comment" data-postId = "${item.postId}" data-comment-text = "${item.text}">🗑</button>
                 </div>
                 <br>
                 `

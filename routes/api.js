@@ -78,37 +78,34 @@ module.exports = function(app) {
     });
 
     app.get("/api/currentUser", function(req, res) {
-        User.findOne({
-            id: req.session.userId
-        }).then(function(dbUser) {
-            console.log(dbUser);
-            Post.find({
-                author: dbUser.username
-            }).then(function(dbPosts) {
+            Post.find({})
+            .then(function(dbPosts) {
+                let myPosts = [];
                 let myComments = [];
+
                 dbPosts.forEach(post => {
+                    if (post.author === req.session.username) {
+                        myPosts.push(post);
+                    };
+
                     post.comments.forEach(comment => {
-                        if (post.id === comment.postId) {
-                            let commentInfo = {
-                                commentObj: comment,
-                                postTitle: post.title
-                            }
-
-                            myComments.push(commentInfo);
-
+                        if (comment.author === req.session.username) {
+                            let commentObj = comment;
+                            commentObj.postTitle = post.title;
+                            myComments.push(commentObj);
                         }
                     })
-                })
-                console.log(dbPosts);
+                });
+                
                 let response = {
                     posts: dbPosts,
                     comments: myComments
                 }
+
                 res.json(response);
+            }).catch(function(err) {
+                res.json(err);
             });
-        }).catch(function(err) {
-            res.json(err);
-        });
     });
 
     app.post("/api/signup", function(req, res) {
