@@ -21,7 +21,7 @@ header > * {
     display: inline-block;
     color: inherit;
     padding: 10px;
-    width: 100%;
+    width: 90%;
    
     margin-bottom: 10px;
 }
@@ -57,7 +57,7 @@ header > * {
     max-height: 300px;
     overflow-y: scroll;
     color: var(--body-text);
-    text-align:center;
+    text-align:left;
     margin-bottom: 10px;
 }
 
