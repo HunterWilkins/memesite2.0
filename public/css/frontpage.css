@@ -128,10 +128,11 @@ main {
     #genre-picker {
         -webkit-appearance: none;
         font-size: 20px;
+        padding: 10px;
         text-align:center;
         display: block;
         margin: 0 auto 10px auto;
-        border: none;
+        border: var(--layer3) solid 2px;
         background: inherit;
         color: var(--text-color);
     }
