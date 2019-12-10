@@ -20,13 +20,13 @@ html {
 }
 
 :root {
-    --layer0: rgb(33, 32, 37);
-    --layer1: rgb(47, 52, 59);
-    --layer2: rgb(62, 74, 82);
-    --layer3: rgb(100,100,100);
-    --layer4: rgb(120,120,120);
+    --layer0: rgb(28, 27, 34);
+    --layer1: rgb(41, 50, 63);
+    --layer2: rgb(55, 73, 85);
+    --layer3: rgb(59, 89, 97);
+    --layer4: rgb(94, 122, 122);
 
-    --highlight: rgb(221, 221, 221);
+    --highlight: rgb(197, 233, 235);
     --body-text: rgb(194, 194, 194);
 
     --text-color: white;

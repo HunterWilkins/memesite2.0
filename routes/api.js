@@ -15,15 +15,24 @@ module.exports = function(app) {
     });
 
     app.post("/api/posts/:genre", function(req, res) {
-        Post.find(req.params.genre === "all" ? {} : {genre: req.params.genre})
+        console.log("================FINDING POSTS================");
+        console.log(req.params.genre);
+        Post.find(req.params.genre === "all" || req.params.genre === "undefined" ? {} : {genre: req.params.genre})
         .then(function(dbPosts) {
+            console.log("=/=/=/=/=/Found These Posts:/=/=/=/=/");
+            
             let resultingPosts = [];
-            console.log(req.body.tags);
             let tags = req.body.tags ? req.body.tags.split(",") : null;
-            if (tags) {
+            console.log("=/=/=/=/=/The Available Tags/=/=/=/=/");
+            console.log(tags);
+            if (tags !== null) {
+                console.log("=/=/=/=/=/Tags Found!/=/=/=/=/=/");
+
                 dbPosts.forEach(post => {
                     tags.forEach(item => {
                         if (post.tags.indexOf(item) !== -1) {
+                            console.log("Found tag!");
+                            console.log(post);
                             resultingPosts.push(post);
                         };
                     });

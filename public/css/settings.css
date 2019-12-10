@@ -15,12 +15,12 @@ header > * {
    
 }
 
-.my-post {
+.my-post, .my-comment {
     position: relative;
     background: var(--layer1);
     display: inline-block;
     color: inherit;
-    padding: 20px;
+    padding: 10px;
     width: 100%;
    
     margin-bottom: 10px;
@@ -120,16 +120,16 @@ header > * {
     font-size: 24px;
 }
 
-.my-comment {
+/* .my-comment {
     position: relative;
     padding: 5px;
     background: var(--layer1);
-}
+} */
 
-.my-comment textarea {
+/* .my-comment textarea {
     min-height: 1em;
     height: initial;
-}
+} */
 
 .my-comment p {
     padding: 10px 0px;
