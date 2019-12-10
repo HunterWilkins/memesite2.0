@@ -88,15 +88,28 @@
                         <a href = "/frontpage/politics">Politics</a>
                     </div>
                 </div>
+
+                <select id="genre-picker">
+                    <option selected = "true" disabled = "true">Select Genre</option>
+                    <option value = "all">All</option>
+                    <option value = "gaming">Gaming</option>
+                    <option value = "literature">Literature</option>
+                    <option value = "music">Music</option>
+                    <option value = "comedy">Comedy</option>
+                    <option value = "programming">Programming</option>
+                    <option value = "animals">Animals</option>
+                    <option value = "film">Film</option>
+                    <option value = "tv">TV</option>
+                    <option value = "art">Art</option>
+                    <option value = "politics">Politics</option>
+                </select>
+                
                 <div class = "relative" id = "tags-box">
                     <input type="text" id="tag-picker" placeholder = "Tags, tags, tags...">
                     <span class = "detail">Separate tags with commas.</span>
                 </div>
                 <button id = "filter-tags">Filter</button>
             </div>
-
-            
-
 
         </div>
     {{#if userId}}

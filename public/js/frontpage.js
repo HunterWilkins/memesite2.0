@@ -87,8 +87,7 @@ $(document).ready(function() {
     });
 
     $("#genre-picker").on("change", function() {      
-        console.log($(this).val());
-        window.location.replace(`/frontpage/${$(this).val()}`);
+        window.location.replace(`/frontpage/${$(this).val().toLowerCase()}`);
     });
 
     $("#genre-select").on("click", function() {
