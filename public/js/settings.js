@@ -45,6 +45,62 @@ $(document).ready(function(){
         })
     });
 
+    $("#themes").on("click", "button", function() {
+        let newTheme;
+       
+        switch($(this).text()) {
+            case "Forest":
+                newTheme = {
+                    "--layer0": "rgb(33, 34, 27)",
+                    "--layer1": "rgb(49, 63, 41)",
+                    "--layer2": "rgb(56, 85, 55)",
+                    "--layer3": "rgb(59, 97, 78)",
+                    "--layer4": "rgb(94, 122, 109)",
+                
+                    "--highlight": "rgb(201, 235, 197)",
+                    "--body-text": "rgb(194, 194, 194)",
+                
+                    "--text-color": "white",
+                    "--text-family":  "sans-serif",
+                }
+                break;
+            case "Ocean": 
+                newTheme = {
+                    "--layer0": "rgb(28, 27, 34)",
+                    "--layer1": "rgb(41, 50, 63)",
+                    "--layer2": "rgb(55, 73, 85)",
+                    "--layer3": "rgb(59, 89, 97)",
+                    "--layer4": "rgb(94, 122, 122)",
+                
+                    "--highlight": "rgb(197, 233, 235)",
+                    "--body-text": "rgb(194, 194, 194)",
+                
+                    "--text-color": "white",
+                    "--text-family":  "sans-serif",
+                }
+                break;
+            case "Ruby": 
+                newTheme = {
+                    "--layer0": "rgb(34, 27, 27)",
+                    "--layer1": "rgb(63, 46, 41)",
+                    "--layer2": "rgb(85, 61, 55)",
+                    "--layer3": "rgb(97, 77, 59)",
+                    "--layer4": "rgb(122, 121, 94)",
+
+                    "--highlight": "rgb(247, 240, 234)",
+                    "--body-text": "rgb(194, 194, 194)",
+
+                    "--text-color": "white",
+                    "--text-family":  "sans-serif",
+                }
+            default: break;
+
+        }
+
+        $(":root").css(newTheme);
+        localStorage.setItem("theme", JSON.stringify(newTheme));
+    })
+
     $("#delete-account").on("click", function() {
         let confirmation = confirm("This will delete your account and all of your posts. Do you want to do that?");
         if (confirmation) {

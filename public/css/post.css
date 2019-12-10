@@ -26,6 +26,9 @@ header {
     text-align:right;
     font-style: italic;
     position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     opacity: .5;
     top: 0px;
     width: 20%;

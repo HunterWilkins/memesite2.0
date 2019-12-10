@@ -1,3 +1,10 @@
+let theme = localStorage.getItem("theme");
+
+if (theme) {
+    $(":root").css(JSON.parse(theme));
+    console.log($(":root").css("--layer0"));
+}
+
 $(document).ready(function() {    
     let user;
     let postQuantity = 0;
