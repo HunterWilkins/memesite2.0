@@ -6,6 +6,8 @@ $(document).ready(function() {
         pageGenre = "all"
     }
 
+    $("#frontpage-title").text("Frontpage - " + pageGenre);
+
 
     $.ajax({
         url:`/api/posts/${pageGenre ? pageGenre : "all"}`,
@@ -16,6 +18,7 @@ $(document).ready(function() {
         success: function(data) {
             if (data.length !== 0) {
                 postQuantity++;
+
 
                 data.forEach(item => {
                     let timeElapsed;
