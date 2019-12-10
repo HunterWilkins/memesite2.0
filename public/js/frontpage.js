@@ -8,7 +8,6 @@ $(document).ready(function() {
 
     $("#frontpage-title").text("Frontpage - " + pageGenre);
 
-
     $.ajax({
         url:`/api/posts/${pageGenre ? pageGenre : "all"}`,
         method: "POST",
