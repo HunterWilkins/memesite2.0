@@ -23,6 +23,10 @@ let PostSchema = new Schema ({
         type: String,
         required: true
     },
+
+    imageLink: {
+        type: String
+    },
     
     tags: {
         type: Array,

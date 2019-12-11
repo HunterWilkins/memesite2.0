@@ -161,6 +161,7 @@ module.exports = function(app) {
                 id: req.body.id,
                 title: req.body.title,
                 body: req.body.body,
+                imageLink: req.body.imageLink,
                 genre: req.body.genre,
                 tags: req.body.tags,
                 author: dbUser.username,

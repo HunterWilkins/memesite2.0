@@ -35,6 +35,18 @@ header {
     right: 0px;
 }
 
+#image {
+    max-height: 70vh;
+    width: 100%;
+    text-align:center;
+}
+
+#image img {
+    max-height: 70vh;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
 #body {
     padding: 5px;
     max-width: 550px;
@@ -44,6 +56,7 @@ header {
     line-height: 1.5em;
     color: var(--body-text);
 }
+
 
 #author, #times {
     opacity: .50;

@@ -64,10 +64,33 @@ $(document).ready(function() {
     })
 
     $("#submit-post").on("click", function(event) {
+        debugger;
+        event.stopImmediatePropagation();  
+     
+        let forbiddenWords = [
+            "porn",
+            "tits",
+            "boobs",
+            "dick",
+            "penis",
+            "sex",
+            "xxx",
+            "xvideos",
+            "xhamster"
+        ];
+
         let tags = $("#post-tags").val().split(",");
+        let imageLink = $("#image-link").val();
+        let familyFriendly = true;
+       
+        forbiddenWords.forEach(item => {
+            if (imageLink.indexOf(item) !== -1 && familyFriendly === true) {
+                familyFriendly = false;
+            }
+        });
+        ;
 
-        event.stopImmediatePropagation();    
-
+        if (familyFriendly === true) {
         $.ajax({
             url: "/api/createPost",
             method: "POST",
@@ -75,17 +98,24 @@ $(document).ready(function() {
                 id: `${Math.floor(Math.random()*2000)}${$("input[placeholder = Title]").val().toLowerCase()}${Date.now().toString().slice(8)}`,
                 title: $("input[placeholder = Title]").val(),
                 body: $("textarea[placeholder = Body]").val(),
+                imageLink: $("#image-link").val(),
                 genre: $("#post-genre").val(),
                 tags: tags
             },
             success: function() {
                 console.log("Success!");
+                // window.location.reload();
             },
             error: function() {
                 console.log("Error");
             }
         });
 
+        }
+
+        else {
+            alert("You're not allowed to post that on this site.");
+        }
     });
 
     $("textarea[placeholder = Body]").on("keydown", function(event) {
