@@ -64,7 +64,7 @@ $(document).ready(function() {
     })
 
     $("#submit-post").on("click", function(event) {
-        debugger;
+        console.log("SUBMITTING A POST!");
         event.stopImmediatePropagation();  
      
         let forbiddenWords = [
@@ -88,28 +88,27 @@ $(document).ready(function() {
                 familyFriendly = false;
             }
         });
-        ;
-
-        if (familyFriendly === true) {
-        $.ajax({
-            url: "/api/createPost",
-            method: "POST",
-            data: {
-                id: `${Math.floor(Math.random()*2000)}${$("input[placeholder = Title]").val().toLowerCase()}${Date.now().toString().slice(8)}`,
-                title: $("input[placeholder = Title]").val(),
-                body: $("textarea[placeholder = Body]").val(),
-                imageLink: $("#image-link").val(),
-                genre: $("#post-genre").val(),
-                tags: tags
-            },
-            success: function() {
-                console.log("Success!");
-                // window.location.reload();
-            },
-            error: function() {
-                console.log("Error");
-            }
-        });
+        
+        if (familyFriendly == true) {
+            $.ajax({
+                url: "/api/createPost",
+                method: "POST",
+                data: {
+                    id: `${Math.floor(Math.random()*2000)}${Date.now().toString().slice(8)}`,
+                    title: $("input[placeholder = Title]").val(),
+                    body: $("textarea[placeholder = Body]").val(),
+                    imageLink: $("#image-link").val(),
+                    genre: $("#post-genre").val(),
+                    tags: tags
+                },
+                success: function() {
+                    console.log("Success!");
+                    // window.location.reload();
+                },
+                error: function() {
+                    console.log("Error");
+                }
+            });
 
         }
 

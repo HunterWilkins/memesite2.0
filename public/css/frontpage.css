@@ -155,9 +155,6 @@ main {
         color: var(--text-color);
     }
 
-    
-
-
     #genre-select {
         display: none;
     }
