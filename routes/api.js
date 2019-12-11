@@ -98,7 +98,7 @@ module.exports = function(app) {
                 });
                 
                 let response = {
-                    posts: dbPosts,
+                    posts: myPosts,
                     comments: myComments
                 }
 
