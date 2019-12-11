@@ -55,7 +55,7 @@ $(document).ready(function() {
         
         $("#title").text(data.title);
         $("#body").text(data.body);
-        $("#image").append(`<img src = "${data.imageLink}" alt = "${data.imageLink}">`)
+        $("#image").append(`<img src = "${data.imageLink}" alt = "${data.imageLink}"><hr>`)
         $("#author").text("Author: " + data.author);
         $("#genre").text(data.genre);
         $("#date").text(data.date);
