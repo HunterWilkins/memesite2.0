@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(session({
     secret: "youtubecommentsaren'tthatbad",
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: new MongoStore({
         mongooseConnection: mongoose.connection,
         autoRemove: "interval",
