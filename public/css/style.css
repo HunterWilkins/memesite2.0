@@ -5,6 +5,7 @@
 html {
     -webkit-text-size-adjust: 100%;
     -webkit-overflow-scrolling: touch;
+    -moz-overflow-scrolling: touch;
 }
 
 ::-webkit-scrollbar {
