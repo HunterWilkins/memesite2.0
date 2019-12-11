@@ -213,7 +213,8 @@ module.exports = function(app) {
         }, {$set: {"comments.$[comment].text" : req.body.text}}, 
         {
             arrayFilters: [{"comment.id" : req.body.commentId}],
-            new: true
+            new: true,
+            useFindAndModify: false
         }
         
         ).then(function(dbPost) {
@@ -227,12 +228,12 @@ module.exports = function(app) {
             res.json(dbPost);
         }).catch(err => console.log(err));
         
-    })
+    });
 
     app.put("/api/deleteComment", function(req, res) {
         Post.findOneAndUpdate({
             id: req.body.postId
-        }, {$pull: {"comments": {"text": req.body.text}}}).then(function(dbPost){
+        }, {$pull: {"comments": {"text": req.body.text}}}, {useFindAndModify: false}).then(function(dbPost){
             console.log("Successfully Deleted Comment.");
             res.sendStatus(200);
         }).catch(err => console.log(err));
@@ -250,7 +251,7 @@ module.exports = function(app) {
     app.put("/api/deleteTag", function(req, res) {
         Post.findOneAndUpdate({
             id: req.body.postId
-        }, {$pull: {"tags" : req.body.tag}}).then(function(dbPost) {
+        }, {$pull: {"tags" : req.body.tag}}, {useFindAndModify: false}).then(function(dbPost) {
             res.sendStatus(200);
             console.log("Removal Successful!");
         }).catch(err => console.log(err));
@@ -259,7 +260,7 @@ module.exports = function(app) {
     app.put("/api/updatePost", function(req, res) {
         Post.findOneAndUpdate({
             id: req.body.postId
-        }, {[req.body.field] : req.body.update}, {new: true, upsert: true})
+        }, {[req.body.field] : req.body.update}, {new: true, upsert: true, useFindAndModify: false})
         .then(function(dbPost) {
             res.sendStatus(200);
         }).catch(err => console.log(err));

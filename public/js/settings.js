@@ -9,7 +9,7 @@ $(document).ready(function(){
                 `
                 <div class = "my-post" data-postId = "${item.id}">
                     <button class = "delete-post">🗑</button>
-                    <textarea class = "my-post-title" type = "text" data-field = "title">${item.title}</textarea>
+                    <p class = "my-post-title" contenteditable data-field = "title">${item.title}</p>
                     <hr>
                     <textarea class = "my-post-body" data-field = "body">${item.body}</textarea>
                     <hr>
@@ -161,14 +161,14 @@ $(document).ready(function(){
         $(this).parent().remove();
     })
 
-    $("#my-posts").on("blur", "textarea, input", function() {
+    $("#my-posts").on("blur", "textarea, input, p", function() {
         $.ajax({
             url: "/api/updatePost",
             method: "PUT",
             data: {
                 postId: $(this).parent().attr("data-postId"),
                 field: $(this).attr("data-field"),
-                update: $(this).val()
+                update: $(this).val() ? $(this).val() : $(this).text()
             }
 
         })
