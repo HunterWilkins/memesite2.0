@@ -97,8 +97,6 @@ main {
     left: 0;
     right: 150px;
     bottom: 0;
-    -webkit-overflow-scrolling: touch;
-    -moz-overflow-scrolling: touch;
     overflow-y: scroll;
 }
 
