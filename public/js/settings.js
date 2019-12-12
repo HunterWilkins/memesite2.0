@@ -5,13 +5,13 @@ $(document).ready(function(){
 
         data.posts.forEach(item => {
            
-            $("#my-posts").append(
+            $("#my-posts").prepend(
                 `
                 <div class = "my-post" data-postId = "${item.id}">
                     <button class = "delete-post">🗑</button>
                     <p class = "my-post-title" contenteditable data-field = "title">${item.title}</p>
                     <hr>
-                    <textarea class = "my-post-body" data-field = "body">${item.body}</textarea>
+                    <textarea class = "my-post-body" cols = "20" data-field = "body" contenteditable>${item.body}</textarea>
                     <hr>
                     <div>
                         ${item.tags.map(tag => {
@@ -31,6 +31,28 @@ $(document).ready(function(){
             );
         });
 
+        $(".my-post-body").each(function(i, item) {
+            let characters = $(item).val();
+            let paragraphs = characters.split("\n");
+            let columns = $(item).attr("cols");
+            let totalRows = paragraphs.length;
+            console.log(characters, paragraphs, totalRows);
+            paragraphs.forEach( item => {
+                console.log(item);
+                totalRows += parseInt(item.length/columns);
+            });
+
+            if (totalRows > 20) {
+                totalRows = 20;
+            }
+
+            console.log(paragraphs);
+
+            $(item).attr("rows", totalRows);
+        })
+
+        // $(".my-post-body").css("height", $(".my-post-body").scrollHeight + "px");
+        console.log($(".my-post-body").scrollHeight);
         data.comments.forEach(item => {
             $("#my-comments").prepend(
                 `
@@ -42,7 +64,7 @@ $(document).ready(function(){
                 <br>
                 `
             )
-        })
+        });
     });
 
     $("#themes").on("click", "button", function() {
@@ -115,7 +137,7 @@ $(document).ready(function(){
 
         $(":root").css(newTheme);
         localStorage.setItem("theme", JSON.stringify(newTheme));
-    })
+    });
 
     $("#delete-account").on("click", function() {
         let confirmation = confirm("This will delete your account and all of your posts. Do you want to do that?");
@@ -126,7 +148,7 @@ $(document).ready(function(){
                 success: window.location.reload()
             });
         }
-    })
+    });
 
     $("#my-posts").on("click", ".delete-tag", function() {
         $.ajax({
@@ -159,7 +181,7 @@ $(document).ready(function(){
         });
 
         $(this).parent().remove();
-    })
+    });
 
     $("#my-posts").on("blur", "textarea, input, p", function() {
         $.ajax({
@@ -195,7 +217,7 @@ $(document).ready(function(){
                 postId: $(this).parent().attr("data-postId")
             }
         })
-    })
+    });
     
     $("#toggle-my-posts").on("click", function() {
         toggleDisplay("#my-posts");

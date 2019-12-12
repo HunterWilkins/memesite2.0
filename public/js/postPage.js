@@ -1,8 +1,8 @@
 
 $(document).ready(function() {
     let user;
-    let upvotes;
-    let downvotes;
+    let upvotes,
+        downvotes;
 
     $.getJSON(`/api/post/${window.location.pathname.split("/")[2]}`, function(data) {
         console.log(data);
@@ -13,7 +13,6 @@ $(document).ready(function() {
         let timeElapsed;
         let timeDesc;
         let ratio = (((data.upvotes) / (data.upvotes + data.downvotes))*100).toFixed(0);
-        console.log(ratio);
         if (data.timeCreated) {
             timeElapsed = (Date.now() - data.timeCreated) / 1000;
             timeDesc = "seconds";
