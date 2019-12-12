@@ -1,9 +1,15 @@
 
 $(document).ready(function() {
     let user;
+    let upvotes;
+    let downvotes;
 
     $.getJSON(`/api/post/${window.location.pathname.split("/")[2]}`, function(data) {
         console.log(data);
+
+        upvotes = data.upvotes;
+        downvotes = data.downvotes;
+
         let timeElapsed;
         let timeDesc;
         let ratio = (((data.upvotes) / (data.upvotes + data.downvotes))*100).toFixed(0);
@@ -66,7 +72,7 @@ $(document).ready(function() {
         }
         $("#votes").text((data.upvotes) + " / " + (data.upvotes + data.downvotes));
         $("#ratio").text(ratio !== "NaN" ? `${ratio}%` : "");
-        $("#ratio-gradient").css({"background": `linear-gradient(90deg, rgb(0,100,0) ${0}, rgb(0,100,0) ${ratio}%, rgb(100,0,0) ${ratio}%, rgb(100,0,0) 100%)`})
+        $("#ratio-gradient").css({"background": `linear-gradient(90deg, var(--highlight) ${0}, var(--highlight) ${ratio}%, var(--layer2) ${ratio}%, var(--layer2) 100%)`})
       
         data.tags.forEach(item => {
             $("#tags").append(
@@ -160,14 +166,19 @@ $(document).ready(function() {
 
     $("#points").on("click", ".div-button", function(event) {
         event.preventDefault();
+        let ratio;
         let value;
         if ($(this).attr("id") === "upvote") {
             console.log("+1");
             value = "+";
+            upvotes++;
         }
         else if ($(this).attr("id") === "downvote") {
             value = "-";
+            downvotes++;
         }
+
+        ratio = (upvotes / (upvotes + downvotes)*100).toFixed(0);
 
         let id = window.location.pathname.split("/")[2];
         let replacedValue = /%20/gi;
@@ -180,13 +191,16 @@ $(document).ready(function() {
                 value: value
             },
             success: function(data) {
-                let ratio = (((data.upvotes) / (data.upvotes + data.downvotes))*100).toFixed(0);
-                $("#ratio").text(ratio !== "NaN" ? `${ratio}%` : "");
-                $("#votes").text((data.upvotes) + " / " + (data.upvotes + data.downvotes));
-                $("#ratio-gradient").css({"background": `linear-gradient(90deg, rgb(0,100,0) ${0}, rgb(0,100,0) ${ratio}%, rgb(100,0,0) ${ratio}%, rgb(100,0,0) 100%)`})
+                // let ratio = (((data.upvotes) / (data.upvotes + data.downvotes))*100).toFixed(0);
+                // $("#ratio").text(ratio !== "NaN" ? `${ratio}%` : "");
+                // $("#votes").text((data.upvotes) + " / " + (data.upvotes + data.downvotes));
+                // $("#ratio-gradient").css({"background": `linear-gradient(90deg, rgb(0,100,0) ${0}, rgb(0,100,0) ${ratio}%, rgb(100,0,0) ${ratio}%, rgb(100,0,0) 100%)`})
             }
         });
 
+        $("#votes").text(`${upvotes} / ${upvotes + downvotes}`);
+        $("#ratio-gradient").css({"background": `linear-gradient(90deg, var(--highlight) ${0}, var(--highlight) ${ratio}%, var(--layer2) ${ratio}%, var(--layer2) 100%)`})
+        $("#ratio").text(`${ratio}%`);
 
     });
 
