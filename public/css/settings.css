@@ -50,7 +50,6 @@ header > * {
     transition: transform .15s;
 }
 
-
 #my-posts, #my-comments {
     display: none;
     width: 100%;
@@ -64,7 +63,6 @@ header > * {
     resize: none;
     font-family: inherit;
     color: var(--highlight);
-    /* height:initial; */
     font-size: 24px;
     width: 80%;
     background: inherit;
