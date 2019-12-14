@@ -162,6 +162,7 @@ main {
         display: none;
         top: initial;
         position: fixed;
+        background: var(--layer2);
         bottom: 70px;
         height: initial;
         transform: none;
