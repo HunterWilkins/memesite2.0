@@ -14,16 +14,16 @@
 <body>
     <nav>
         <a href = "/" class = "centered-y">MemeLodge</a>
-        {{!-- <form class = "right centered-y">
+        <form class = "right centered-y">
             <input type="text" id="search-bar" placeholder = "Search...">
             <button id = "search">Go!</button>
-        </form> --}}
+        </form>
         
     </nav>
     {{{body}}}
     <aside>
-    
-        <div class="blackdrop">
+        
+        <div class="blackdrop"> <!--Black Overlay for Post-->
             <form id = "create-post" >
                 <div class = "div-button" id = "close-post">
                     <p>X</p>
@@ -53,16 +53,15 @@
                 <input type="text" placeholder = "Tags,separated,by,commas" id = "post-tags">
                 <br>
                 <button id = "submit-post">Submit</button>
-
             </form>
 
         </div>
 
         <div id="controls">
-            {{#if userId}}
+            {{#if userId}} <!--If the User is Logged In (req.session.userId)-->
             <div id = "toggle-post" class = "div-button">
                 <p>+</p>
-                <span class = "detail">Make a Post...</span>
+                <span class = "detail">Make a Post...</span> <!--Detail shows on mouse hover-->
             </div>
 
             <a href = "/settings" id = "account" class = "div-button">
@@ -70,12 +69,13 @@
                 <span class = "detail">Account settings...</span>
             </a>
             {{/if}}
+            <!--Filters: #toggle-filters is for mobile, #filters shows automatically on desktop-->
             <div class="div-button" id = "toggle-filters">
                 <p>f</p>
             </div>
 
             <div id="filters">
-                
+                <!--Alternative Select for Desktop-->
                 <div id="genre-select">
                     <p>Select Genre</p>
                     <div id="genres">
@@ -93,6 +93,7 @@
                     </div>
                 </div>
 
+                <!--Actual <select> element, stylized for mobile-->
                 <div id="genre-picker-box">
                     <p>Select Genre</p>
                     <select id="genre-picker">
@@ -126,9 +127,7 @@
         <div class="div-button centered-y" id = "show-account">
             <p>☰</p>
         </div>
-
         <br>
-
         <form id = "login-form">
             <input type="text" placeholder = "Username">
             <input type="password" placeholder = "Password">

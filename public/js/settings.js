@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+    // Gets all posts and comments the user made
     $.getJSON("/api/currentUser", function(data) {
         console.log(data);
 
@@ -31,6 +32,7 @@ $(document).ready(function(){
             );
         });
 
+        // Made it so that textarea grows with content up to 20 rows.
         $(".my-post-body").each(function(i, item) {
             let characters = $(item).val();
             let paragraphs = characters.split("\n");
@@ -51,8 +53,6 @@ $(document).ready(function(){
             $(item).attr("rows", totalRows);
         })
 
-        // $(".my-post-body").css("height", $(".my-post-body").scrollHeight + "px");
-        console.log($(".my-post-body").scrollHeight);
         data.comments.forEach(item => {
             $("#my-comments").prepend(
                 `
@@ -252,6 +252,5 @@ $(document).ready(function(){
                 break;
         }
     }
-
 
 });

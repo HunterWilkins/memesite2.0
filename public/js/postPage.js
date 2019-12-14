@@ -3,7 +3,7 @@ $(document).ready(function() {
     let user;
     let upvotes,
         downvotes;
-
+    // Get the relevant post by Id
     $.getJSON(`/api/post/${window.location.pathname.split("/")[2]}`, function(data) {
         console.log(data);
 
@@ -13,6 +13,8 @@ $(document).ready(function() {
         let timeElapsed;
         let timeDesc;
         let ratio = (((data.upvotes) / (data.upvotes + data.downvotes))*100).toFixed(0);
+
+        // Calculating time elapsed from the timeCreated property
         if (data.timeCreated) {
             timeElapsed = (Date.now() - data.timeCreated) / 1000;
             timeDesc = "seconds";
@@ -150,6 +152,7 @@ $(document).ready(function() {
         })
     });
 
+    // Allow for indentations via pressing "Tab" on the keyboard while commenting
     $("#comment-body").on("keydown", function(event) {
         
         if (event.keyCode === 9) {

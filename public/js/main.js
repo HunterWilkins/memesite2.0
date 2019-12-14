@@ -1,5 +1,6 @@
 let theme = localStorage.getItem("theme");
 
+// Changes color scheme of page to match localStorage value before page load
 if (theme) {
     $(":root").css(JSON.parse(theme));
     console.log($(":root").css("--layer0"));
@@ -17,7 +18,7 @@ $(document).ready(function() {
         else {
             $("#login-form").css({display: "none"});
         }
-    })
+    });
 
     $("#login-form").on("click", "button", function() {
         event.preventDefault();
@@ -64,9 +65,9 @@ $(document).ready(function() {
     })
 
     $("#submit-post").on("click", function(event) {
-        console.log("SUBMITTING A POST!");
         event.stopImmediatePropagation();  
      
+        // Prevents users from posting questionable image links
         let forbiddenWords = [
             "porn",
             "tits",
@@ -76,7 +77,8 @@ $(document).ready(function() {
             "sex",
             "xxx",
             "xvideos",
-            "xhamster"
+            "xhamster",
+            "redtube",
         ];
 
         let tags = $("#post-tags").val().split(",");
@@ -117,6 +119,7 @@ $(document).ready(function() {
         }
     });
 
+    // Allows for "Tab" to indent while typing in CreatePost textarea
     $("textarea[placeholder = Body]").on("keydown", function(event) {
         
         if (event.keyCode === 9) {

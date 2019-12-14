@@ -16,22 +16,19 @@
 
         <hr>
 
-        <div id="image">
-            
-        </div>
+        <div id="image"></div>
 
         <p id="body"></p>
 
         <hr>
 
-        <div id="tags">
+        <div id="tags"></div>
 
-        </div>
         <div id="points">
             <p id = "votes"></p>
             <span id = "ratio-gradient"></span>
             <p id="ratio"></p>
-            {{#if userId}}
+            {{#if userId}} <!--Only allow voting if user is logged in-->
             <div class = "div-button" id="upvote">
                 <p>▲</p>
             </div>
@@ -44,7 +41,7 @@
         
     </article>
     <br>
-    {{#if userId}}
+    {{#if userId}} <!--Only allow commenting if user is logged in-->
         <form id="comment-form">
             <textarea id="comment-body" placeholder = "Comment..."></textarea>
             
@@ -52,9 +49,7 @@
         </form>
     {{/if}}
 
-    <section id = "comments">
-
-    </section>
+    <section id = "comments"></section>
 </main>
 
 <script src="/js/postPage.js"></script>

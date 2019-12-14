@@ -20,14 +20,12 @@ module.exports = function(app) {
         Post.find(req.params.genre === "all" || req.params.genre === "undefined" ? {} : {genre: req.params.genre})
         .then(function(dbPosts) {
             console.log("=/=/=/=/=/Found These Posts:/=/=/=/=/");
-            
             let resultingPosts = [];
             let tags = req.body.tags ? req.body.tags.split(",") : null;
             console.log("=/=/=/=/=/The Available Tags/=/=/=/=/");
             console.log(tags);
             if (tags !== null) {
                 console.log("=/=/=/=/=/Tags Found!/=/=/=/=/=/");
-
                 dbPosts.forEach(post => {
                     tags.forEach(item => {
                         if (post.tags.indexOf(item) !== -1) {
@@ -47,35 +45,35 @@ module.exports = function(app) {
         });    
     });
 
-    app.post("/api/posts/search/:term", function(req, ram) {
+    // app.post("/api/posts/search/:term", function(req, ram) {
     
-        let results = {
-            users: [],
-            posts: []
-        }
+    //     let results = {
+    //         users: [],
+    //         posts: []
+    //     }
 
-        User.find({
-            username: req.params.term
-        }).then(function(dbUsers) {
-            dbUsers.forEach(item => {
-                results.users.push(item.username);
-            });
+    //     User.find({
+    //         username: req.params.term
+    //     }).then(function(dbUsers) {
+    //         dbUsers.forEach(item => {
+    //             results.users.push(item.username);
+    //         });
 
-            Post.find({
-                title: req.params.term
-            }).then(function(dbPosts) {
-                dbPosts.forEach(item => {
-                    results.posts.push({
-                        author: item.author,
-                        postId: item.id
-                    });
-                });
+    //         Post.find({
+    //             title: req.params.term
+    //         }).then(function(dbPosts) {
+    //             dbPosts.forEach(item => {
+    //                 results.posts.push({
+    //                     author: item.author,
+    //                     postId: item.id
+    //                 });
+    //             });
 
-                res.json(results)
-            }).catch(err => console.log(err));
-        }).catch(err => console.log(err));
+    //             res.json(results)
+    //         }).catch(err => console.log(err));
+    //     }).catch(err => console.log(err));
 
-    });
+    // });
 
     app.get("/api/currentUser", function(req, res) {
             Post.find({})
@@ -145,6 +143,39 @@ module.exports = function(app) {
         req.session.destroy();
         res.sendStatus(200);
     });
+
+    app.post("/api/search", function(req, res) {
+        Post.find({})
+        .then(function(dbPosts) {
+            let response = [];
+
+            dbPosts.forEach(post => {
+                if (post.tags.indexOf(req.body.term) !== -1) {
+                    response.push({
+                        post: post,
+                        type: "tags"
+                    });
+                }
+
+                if (post.title === req.body.term) {
+                    response.push({
+                        post: post,
+                        type: "title"
+                    });
+                }
+
+                if (post.author === req.body.term) {
+                    response.push({
+                        post: post,
+                        type: "author"
+                    });
+                }
+            });
+            console.log("These are the search results:");
+            console.log(response);
+            res.json(response);
+        }).catch(err => console.log(err));
+    })
 
     app.post("/api/createPost", function(req, res) {
         console.log("Create Post Route Called");

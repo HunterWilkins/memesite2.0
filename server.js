@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(session({
     secret: "youtubecommentsaren'tthatbad",
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: false, // Set to false: MLab wasn't deleting expired sessions
     store: new MongoStore({
         mongooseConnection: mongoose.connection,    
     }),
@@ -32,6 +32,7 @@ app.set("view engine", "handlebars");
 
 mongoose.connect(MONGODB_URI, {useNewUrlParser: true , useUnifiedTopology: true });
 mongoose.set("useCreateIndex", true);
+
 // Routes
 require("./routes/api.js")(app);
 require("./routes/html.js")(app);
