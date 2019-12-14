@@ -12,7 +12,7 @@ $(document).ready(function(){
                     <button class = "delete-post">🗑</button>
                     <p class = "my-post-title" contenteditable data-field = "title">${item.title}</p>
                     <hr>
-                    <textarea class = "my-post-body" cols = "20" data-field = "body" contenteditable>${item.body}</textarea>
+                    <textarea class = "my-post-body" cols = "20" data-field = "body">${item.body}</textarea>
                     <hr>
                     <div>
                         ${item.tags.map(tag => {
@@ -32,8 +32,20 @@ $(document).ready(function(){
             );
         });
 
+        data.comments.forEach(item => {
+            $("#my-comments").prepend(
+                `
+                <div class = "my-comment" data-commentId = "${item.id}" data-postId = "${item.postId}">
+                    <p>${item.postTitle}</p>
+                    <textarea cols = "20">${item.text}</textarea>
+                    <button class = "delete-comment" data-postId = "${item.postId}" data-comment-text = "${item.text}">🗑</button>
+                </div>
+                <br>
+                `
+            );
+        });
         // Made it so that textarea grows with content up to 20 rows.
-        $(".my-post-body").each(function(i, item) {
+        $(".my-post-body, .my-comment textarea").each(function(i, item) {
             let characters = $(item).val();
             let paragraphs = characters.split("\n");
             let columns = $(item).attr("cols");
@@ -48,22 +60,9 @@ $(document).ready(function(){
                 totalRows = 20;
             }
 
-            console.log(paragraphs);
+            console.log(totalRows);
 
             $(item).attr("rows", totalRows);
-        })
-
-        data.comments.forEach(item => {
-            $("#my-comments").prepend(
-                `
-                <div class = "my-comment" data-commentId = "${item.id}" data-postId = "${item.postId}">
-                    <p>${item.postTitle}</p>
-                    <textarea>${item.text}</textarea>
-                    <button class = "delete-comment" data-postId = "${item.postId}" data-comment-text = "${item.text}">🗑</button>
-                </div>
-                <br>
-                `
-            )
         });
     });
 

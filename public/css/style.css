@@ -12,7 +12,6 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-   
     background: inherit;
 }
 
@@ -118,6 +117,21 @@ aside {
     font-size: 18px;
 }
 
+#search {
+    background: inherit;
+    color: inherit;
+    border-radius: 50px;
+    border: var(--highlight) solid 1.5px;
+    font-size: 16px;
+    padding: 2px 8px;
+}
+
+#search-bar {
+    background: inherit;
+    border: none;
+    border-bottom: var(--highlight) solid 1px;
+}
+
 #controls {
     position: relative;
     margin-top: 30px;
@@ -136,7 +150,6 @@ aside {
 #filters, #toggle-filters {
     display: none;
 }
-
 
 .div-button {
     display: inline-block;
@@ -309,6 +322,7 @@ aside {
 
 .right {
     right: 5px;
+    text-align:right;
 }
 
 .left {
@@ -343,6 +357,14 @@ aside {
         width: 100%;
         top: initial;
         height: 70px;
+    }
+
+    aside form {
+        width: 50%;
+    }
+
+    #search-bar {
+        width: 50%;
     }
 
     #create-post {

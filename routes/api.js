@@ -150,25 +150,10 @@ module.exports = function(app) {
             let response = [];
 
             dbPosts.forEach(post => {
-                if (post.tags.indexOf(req.body.term) !== -1) {
-                    response.push({
-                        post: post,
-                        type: "tags"
-                    });
-                }
-
-                if (post.title === req.body.term) {
-                    response.push({
-                        post: post,
-                        type: "title"
-                    });
-                }
-
-                if (post.author === req.body.term) {
-                    response.push({
-                        post: post,
-                        type: "author"
-                    });
+                if (post.tags.indexOf(req.body.term) !== -1
+                || post.title === req.body.term
+                || post.author === req.body.term) {
+                    response.push(post);
                 }
             });
             console.log("These are the search results:");

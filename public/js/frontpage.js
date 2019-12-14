@@ -16,73 +16,7 @@ $(document).ready(function() {
             tags: $("#tag-picker").val()
         },
         success: function(data) {
-            if (data.length !== 0) {
-                postQuantity++;
-
-                data.forEach(item => {
-                    let timeElapsed;
-                    let timeDesc;
-
-                    if (item.timeCreated) {
-                        timeElapsed = (Date.now() - item.timeCreated) / 1000;
-                        timeDesc = "sec";
-        
-                        if (timeElapsed >= 60 && timeElapsed < 3600) {
-                            timeElapsed /= 60;
-                            timeDesc = "min";
-                        }
-        
-                        else if (timeElapsed >= 3600 && timeElapsed < 86400) {
-                            timeElapsed /= 60*60;
-                            if (timeElapsed <= 2) {
-                                timeDesc = "hr";
-                            }
-                            else {
-                                timeDesc = "hrs";
-                            }
-                        }
-        
-                        if (timeElapsed >= 86400) {
-                            timeElapsed /= 60*60*24;
-                            if (timeElapsed <= 2) {
-                                timeDesc = "day";
-                            }
-                            else {
-                                timeDesc = "days";
-                            }
-                        }
-        
-                        if (timeDesc === "days" && timeElapsed >= 30) {
-                            timeElapsed /= 30;
-                            timeDesc = "months";
-                        }
-        
-                        if (timeDesc === "months" && timeElapsed >= 12) {
-                            timeElapsed /= 12;
-                            timeDesc = "yrs";
-                        }
-                    }
-
-                    $("#posts").prepend(
-                        `<a class = "post" href = "/posts/${item.id}">
-                            <p class = "post-title">${item.title}</p>
-                            <p class = "post-author">${item.author}</p>
-                            <div class = "post-rightside">
-                                <p class = "post-genre">${item.genre}</p>
-                                ${timeElapsed ? 
-                                `<p class = "post-time-elapsed">${timeElapsed.toFixed(0)} ${timeDesc} ago</p>`
-                                :
-                                " "
-                            }
-                            </div>
-                        </a>
-                        `
-                    );  
-                })    
-            }
-            else {
-                $("#posts").text("No results.");
-            }
+            applyPosts(data);
         }
     });
 
@@ -184,9 +118,7 @@ $(document).ready(function() {
         });
     });
 
-    // Future search function...
     $("#search").on("click", function() {
-        console.log("Search button clicked...")
         event.preventDefault();
         $.ajax({
             url: "/api/search",
@@ -195,69 +127,72 @@ $(document).ready(function() {
                 term: $("#search-bar").val()
             },
             success: function(data) {
-                $("#posts").empty();
-                data.forEach(item => {
-                    let timeElapsed;
-                    let timeDesc;
-
-                    if (item.post.timeCreated) {
-                        timeElapsed = (Date.now() - item.post.timeCreated) / 1000;
-                        timeDesc = "sec";
-        
-                        if (timeElapsed >= 60 && timeElapsed < 3600) {
-                            timeElapsed /= 60;
-                            timeDesc = "min";
-                        }
-        
-                        else if (timeElapsed >= 3600 && timeElapsed < 86400) {
-                            timeElapsed /= 60*60;
-                            if (timeElapsed <= 2) {
-                                timeDesc = "hr";
-                            }
-                            else {
-                                timeDesc = "hrs";
-                            }
-                        }
-        
-                        if (timeElapsed >= 86400) {
-                            timeElapsed /= 60*60*24;
-                            if (timeElapsed <= 2) {
-                                timeDesc = "day";
-                            }
-                            else {
-                                timeDesc = "days";
-                            }
-                        }
-        
-                        if (timeDesc === "days" && timeElapsed >= 30) {
-                            timeElapsed /= 30;
-                            timeDesc = "months";
-                        }
-        
-                        if (timeDesc === "months" && timeElapsed >= 12) {
-                            timeElapsed /= 12;
-                            timeDesc = "yrs";
-                        }
-                    }
-
-                    $("#posts").prepend(`
-                    <a class = "post" href = "/posts/${item.post.id}">
-                    <p class = "post-title">${item.post.title}</p>
-                    <p class = "post-author">${item.post.author}</p>
-                    <div class = "post-rightside">
-                        <p class = "post-genre">${item.post.genre}</p>
-                        ${timeElapsed ? 
-                        `<p class = "post-time-elapsed">${timeElapsed.toFixed(0)} ${timeDesc} ago</p>`
-                        :
-                        " "
-                    }
-                    </div>
-                </a>  
-                    `)
-                })
+                applyPosts(data);
             }
         });
-    })
+    });
 
+    function applyPosts(data) {
+        $("#posts").empty();
+        data.forEach(item => {
+            let timeElapsed;
+            let timeDesc;
+
+            if (item.timeCreated) {
+                timeElapsed = (Date.now() - item.timeCreated) / 1000;
+                timeDesc = "sec";
+
+                if (timeElapsed >= 60 && timeElapsed < 3600) {
+                    timeElapsed /= 60;
+                    timeDesc = "min";
+                }
+
+                else if (timeElapsed >= 3600 && timeElapsed < 86400) {
+                    timeElapsed /= 60*60;
+                    if (timeElapsed <= 2) {
+                        timeDesc = "hr";
+                    }
+                    else {
+                        timeDesc = "hrs";
+                    }
+                }
+
+                if (timeElapsed >= 86400) {
+                    timeElapsed /= 60*60*24;
+                    if (timeElapsed <= 2) {
+                        timeDesc = "day";
+                    }
+                    else {
+                        timeDesc = "days";
+                    }
+                }
+
+                if (timeDesc === "days" && timeElapsed >= 30) {
+                    timeElapsed /= 30;
+                    timeDesc = "months";
+                }
+
+                if (timeDesc === "months" && timeElapsed >= 12) {
+                    timeElapsed /= 12;
+                    timeDesc = "yrs";
+                }
+            }
+
+            $("#posts").prepend(`
+            <a class = "post" href = "/posts/${item.id}">
+            <p class = "post-title">${item.title}</p>
+            <p class = "post-author">${item.author}</p>
+            <div class = "post-rightside">
+                <p class = "post-genre">${item.genre}</p>
+                ${timeElapsed ? 
+                `<p class = "post-time-elapsed">${timeElapsed.toFixed(0)} ${timeDesc} ago</p>`
+                :
+                " "
+            }
+            </div>
+        </a>  
+            `)
+        })
+    }
     
 });
