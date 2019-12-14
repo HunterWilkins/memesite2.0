@@ -6,7 +6,7 @@ main {
     display: block;
     margin-top: 5px;
     width: 100%;
-    background: var(--layer1);
+    background: inherit;
     z-index: 10;
     padding: 5px;
 }
