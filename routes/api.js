@@ -45,36 +45,6 @@ module.exports = function(app) {
         });    
     });
 
-    // app.post("/api/posts/search/:term", function(req, ram) {
-    
-    //     let results = {
-    //         users: [],
-    //         posts: []
-    //     }
-
-    //     User.find({
-    //         username: req.params.term
-    //     }).then(function(dbUsers) {
-    //         dbUsers.forEach(item => {
-    //             results.users.push(item.username);
-    //         });
-
-    //         Post.find({
-    //             title: req.params.term
-    //         }).then(function(dbPosts) {
-    //             dbPosts.forEach(item => {
-    //                 results.posts.push({
-    //                     author: item.author,
-    //                     postId: item.id
-    //                 });
-    //             });
-
-    //             res.json(results)
-    //         }).catch(err => console.log(err));
-    //     }).catch(err => console.log(err));
-
-    // });
-
     app.get("/api/currentUser", function(req, res) {
             Post.find({})
             .then(function(dbPosts) {
@@ -123,6 +93,7 @@ module.exports = function(app) {
     app.post("/api/signin", function(req, res) {
         console.log("Signing In...");
         console.log(req.body);
+        
         let newId = Math.floor(Math.random()*2000).toString();
         User.findOneAndUpdate({
             username: req.body.username,
@@ -130,6 +101,7 @@ module.exports = function(app) {
         }, {"id" : newId}, {useFindAndModify: false})
         .then(function(dbUser) {
             if (dbUser) {
+                req.session.destroy();
                 req.session.userId = newId;
                 req.session.username = dbUser.username;
                 res.json(dbUser);    
