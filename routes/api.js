@@ -101,7 +101,6 @@ module.exports = function(app) {
         }, {"id" : newId}, {useFindAndModify: false})
         .then(function(dbUser) {
             if (dbUser) {
-                req.session.destroy();
                 req.session.userId = newId;
                 req.session.username = dbUser.username;
                 res.json(dbUser);    
