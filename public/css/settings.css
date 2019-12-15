@@ -8,6 +8,36 @@ header > * {
     transform: translateY(-50%);
     top: 50%;
 }
+
+#themes button {
+    border-radius: 50px;
+    padding: 2px 8px;
+}
+
+#forest {
+    border: rgb(59, 97, 78) solid 2px;
+    background: rgb(33, 34, 27);
+    color: rgb(201, 235, 197);
+}
+
+#ruby {
+    border: rgb(97, 71, 59) solid 2px;
+    background: rgb(34, 27, 27);
+    color: rgb(235, 233, 197);
+}
+
+#ocean {
+    border: rgb(59, 77, 97) solid 2px;
+    background: rgb(28, 27, 34);
+    color: rgb(197, 234, 235);
+}
+
+#gold-chip {
+    border: rgb(141, 134, 76) solid 2px;
+    background: rgb(18, 18, 19);
+    color: rgb(255, 246, 209);
+}
+
 #delete-account {
     position: absolute;
     right: 5px;
