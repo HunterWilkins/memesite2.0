@@ -134,6 +134,7 @@ aside {
     border: none;
     border-radius: none;
     border-bottom: var(--highlight) solid 1px;
+    padding-left: 5px;
 }
 
 #controls {
