@@ -122,8 +122,8 @@ module.exports = function(app) {
 
             dbPosts.forEach(post => {
                 if (post.tags.indexOf(req.body.term) !== -1
-                || post.title === req.body.term
-                || post.author === req.body.term) {
+                || post.title.toLowerCase() === req.body.term.toLowerCase()
+                || post.author.toLowerCase() === req.body.term.toLowerCase()) {
                     response.push(post);
                 }
             });
