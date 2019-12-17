@@ -1,4 +1,5 @@
 module.exports = function(app) {
+    const bcrypt = require("bcryptjs");
     let User = require("../models/users.js");
     let Post = require("../models/posts.js");
 
@@ -79,8 +80,13 @@ module.exports = function(app) {
     app.post("/api/signup", function(req, res) {
         console.log("Signing Up...");
         console.log(req.body);
+        let hashPassword = bcrypt.hashSync(req.body.password, 10);
         req.session.userId = req.body.id;
-        User.create(req.body)
+        User.create({
+            username: req.body.username,
+            password: hashPassword,
+            id: req.body.id
+        })
         .then(function(dbUser) {
             console.log(dbUser);
             req.session.username = dbUser.username;
@@ -96,15 +102,21 @@ module.exports = function(app) {
         
         let newId = Math.floor(Math.random()*2000).toString();
         User.findOneAndUpdate({
-            username: req.body.username,
-            password: req.body.password
+            username: req.body.username
         }, {"id" : newId}, {useFindAndModify: false})
         .then(function(dbUser) {
-            if (dbUser) {
+            console.log(bcrypt.compareSync(req.body.password, dbUser.password));
+            if (bcrypt.compareSync(req.body.password, dbUser.password)) {
                 req.session.userId = newId;
                 req.session.username = dbUser.username;
                 res.json(dbUser);    
             }
+
+            else {
+                res.senStatus(500);
+            }
+            
+            
         }).catch(function(err) {
             res.json(err);
         });
