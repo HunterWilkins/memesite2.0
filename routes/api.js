@@ -105,15 +105,17 @@ module.exports = function(app) {
             username: req.body.username
         }, {"id" : newId}, {useFindAndModify: false})
         .then(function(dbUser) {
-            console.log(bcrypt.compareSync(req.body.password, dbUser.password));
-            if (bcrypt.compareSync(req.body.password, dbUser.password)) {
+            console.log(dbUser.password);
+            console.log(req.body.password);
+            console.log(bcrypt.compareSync(dbUser.password, req.body.password));
+            if (bcrypt.compareSync(req.body.password, dbUser.password) === true) {
                 req.session.userId = newId;
                 req.session.username = dbUser.username;
                 res.json(dbUser);    
             }
 
             else {
-                res.senStatus(500);
+                res.sendStatus(500);
             }
             
             
