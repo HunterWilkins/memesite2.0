@@ -2,6 +2,10 @@ main {
     text-align:center;
 }
 
+#search-box {
+    display: block;
+}
+
 #filters {
     display: block;
     margin-top: 5px;

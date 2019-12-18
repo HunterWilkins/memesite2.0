@@ -120,6 +120,10 @@ aside {
     font-size: 18px;
 }
 
+#search-box {
+    display: none;
+}
+
 #search {
     background: inherit;
     color: inherit;
@@ -278,6 +282,25 @@ aside {
 #create-post textarea {
     max-width: 100%;
     height: 200px;
+}
+
+#post-genre {
+    background: var(--layer1);
+    color: var(--highlight);
+    border:none;
+    border-bottom: var(--highlight) solid 1px;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 16px;
+}
+
+#submit-post {
+    background: inherit;
+    border: var(--highlight) solid 2px;
+    border-radius: 20px;
+    padding: 8px 12px;
+    font-size: 18px;
+    color: var(--highlight);
 }
 
 #login-form input {
