@@ -176,10 +176,11 @@ $(document).ready(function() {
                     timeElapsed /= 12;
                     timeDesc = "yrs";
                 }
-            }
+            };
 
             $("#posts").prepend(`
             <a class = "post" href = "/posts/${item.id}">
+            
             <p class = "post-title">${item.title}</p>
             <p class = "post-author">${item.author}</p>
             <div class = "post-rightside">

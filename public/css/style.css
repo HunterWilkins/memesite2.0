@@ -92,6 +92,18 @@ nav {
     height: 35px;
 }
 
+nav a {
+    height: 35px;
+    max-width: 100%;
+    z-index:10;
+}
+
+nav a > img {
+    max-height: 100%;
+    max-width: 100%;
+    z-index:5;
+}
+
 main {
     background: var(--layer0);
     position: fixed;

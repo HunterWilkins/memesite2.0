@@ -94,6 +94,8 @@ main {
     width: 90%;
     text-align:left;
     background: var(--layer1);
+    background-size: 100%;
+    
     border: var(--layer1) solid 2px;
     margin-bottom: 10px;
 }
