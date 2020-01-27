@@ -1,15 +1,6 @@
 module.exports = function(app) {
     app.get("/", function(req, res) {
-        console.log("User Id: " + req.session.userId);
-        if (req.session.userId && req.session.username) {
-            console.log("Found the user.");
-            res.render("frontpage", {userId: req.session.userId, username: req.session.username});
-        }
-
-        else {
-            console.log("Not Logged In");
-            res.render("frontpage");
-        }
+        res.render("landing");
     });
 
     app.get("/frontpage/:genre", function(req,res) {

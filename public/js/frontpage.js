@@ -6,7 +6,7 @@ $(document).ready(function() {
         pageGenre = "all"
     }
 
-    $("#frontpage-title").text("Frontpage - " + pageGenre);
+    $("#frontpage-title").text("Frontpage - " + pageGenre[0].toUpperCase() + pageGenre.slice(1));
 
     // Gets either all posts or all posts from a genre, based on route, and applies it to page 
     $.ajax({

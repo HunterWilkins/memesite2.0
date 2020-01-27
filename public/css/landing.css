@@ -1,0 +1,59 @@
+main {
+    right:0;
+    background: rgb(12, 12, 12);
+}
+
+article {
+    z-index: 5;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 45%;
+    color: var(--highlight);
+    border: var(--layer1) solid 2px;
+    border-radius: 15px;
+    left: 50%;
+    line-height: 1.5em;
+    margin: 0 auto;
+    width: 500px;
+    background: var(--layer0);
+    padding: 15px;
+}
+
+aside {
+    display: none;
+}
+
+article h1 {
+    text-align:center;  
+    padding-top: 25px;  
+}
+
+article a {
+    font-style:italic;
+    width: 100%;
+    padding: 15px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 15px;
+    text-align:center;
+    background: var(--layer2);
+}
+
+
+@media only screen and (max-width: 400px) {
+    article {
+        width: 100%;
+        transform: none;
+        position: initial;
+        left: initial;
+        top: initial;
+    }
+
+    article p {
+        text-align: left;
+    }
+
+    main {
+        bottom: 0;
+    }
+}
