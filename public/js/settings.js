@@ -106,7 +106,7 @@ $(document).ready(function(){
                     "--layer1": "rgb(63, 46, 41)",
                     "--layer2": "rgb(85, 61, 55)",
                     "--layer3": "rgb(97, 77, 59)",
-                    "--layer4": "rgb(122, 121, 94)",
+                    "--layer4": "rgb(146, 121, 116)",
 
                     "--highlight": "rgb(247, 240, 234)",
                     "--body-text": "rgb(194, 194, 194)",

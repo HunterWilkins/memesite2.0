@@ -13,133 +13,38 @@
 </head>
 <body>
     <nav>
-        <a href = "/frontpage/all" class = "centered-y"><img src="/Memelodge_Logo.png" alt="MemeLodge"></a>
-        <form id = "search-box" class = "right centered-y">
-            <input type="text" id="search-bar" placeholder = "Search...">
-            <button id = "search">Go!</button>
-        </form>
-        
-    </nav>
-    {{{body}}}
-    <aside>
-        
-        <div class="blackdrop"> <!--Black Overlay for Post-->
-            <form id = "create-post" >
-                <div class = "div-button" id = "close-post">
-                    <p>X</p>
-                </div>
-
-                <h2>Create a Post</h2>
-                <br>
-                <input type="text" placeholder = "Title" maxlength = "80">
-                <br>
-                <textarea placeholder = "Body"></textarea>
-                <br>
-                <input id = "image-link" type ="text" placeholder = "Image Link (Optional)">
-                <br>
-                <select id="post-genre">
-                    <option disabled selected>Pick A Genre</option>
-                    <option value="gaming">Gaming</option>
-                    <option value="literature">Literature</option>
-                    <option value="music">Music</option>
-                    <option value="comedy">Comedy</option>
-                    <option value="programming">Programming</option>
-                    <option value="animals">Animals</option>
-                    <option value="film">Film</option>
-                    <option value="tv">TV</option>
-                    <option value="art">Art</option>
-                    <option value="politics">Politics</option>
-                </select>
-                <br>
-                <input type="text" placeholder = "Tags,separated,by,commas" id = "post-tags">
-                <br>
-                <button id = "submit-post">Submit</button>
-            </form>
-
-        </div>
-
-        <div id="controls">
-            {{#if userId}} <!--If the User is Logged In (req.session.userId)-->
-            <div id = "toggle-post" class = "div-button">
+        <a class = "centered-y left" href = "/frontpage/all"><img src="/Memelodge_Logo.png" alt="MemeLodge"></a>
+         {{#if userId}} <!--If the User is Logged In (req.session.userId)-->
+            <div id = "toggle-post" class = "detailbox">
                 <p>+</p>
                 <span class = "detail">Make a Post...</span> <!--Detail shows on mouse hover-->
             </div>
 
-            <a href = "/settings" id = "account" class = "div-button">
+            <a class = "detailbox" href = "/settings" id = "account">
                 <p>a</p>
-                <span class = "detail">Account settings...</span>
+                <span class = "detail">Account Settings...</span>
             </a>
-            {{/if}}
-            <!--Filters: #toggle-filters is for mobile, #filters shows automatically on desktop-->
-            <div class="div-button" id = "toggle-filters">
-                <p>f</p>
-            </div>
+    
+            {{!-- <button id = "logout">Logout</button>  --}}
 
-            <div id="filters">
-                <!--Alternative Select for Desktop-->
-                <div id="genre-select">
-                    <p>Genre</p>
-                    <div id="genres">
-                        <a href = "/frontpage/all">All</a>
-                        <a href = "/frontpage/gaming">Gaming</a>
-                        <a href = "/frontpage/literature">Literature</a>
-                        <a href = "/frontpage/music">Music</a>
-                        <a href = "/frontpage/comedy">Comedy</a>
-                        <a href = "/frontpage/programming">Programming</a>
-                        <a href = "/frontpage/animals">Animals</a>
-                        <a href = "/frontpage/film">Film</a>
-                        <a href = "/frontpage/tv">TV</a>
-                        <a href = "/frontpage/art">Art</a>
-                        <a href = "/frontpage/politics">Politics</a>
-                    </div>
-                </div>
 
-                <!--Actual <select> element, stylized for mobile-->
-                <div id="genre-picker-box">
-                    <p>Select Genre</p>
-                    <select id="genre-picker">
-                        <option selected = "true" disabled = "true"></option>
-                        <option value = "all">All</option>
-                        <option value = "gaming">Gaming</option>
-                        <option value = "literature">Literature</option>
-                        <option value = "music">Music</option>
-                        <option value = "comedy">Comedy</option>
-                        <option value = "programming">Programming</option>
-                        <option value = "animals">Animals</option>
-                        <option value = "film">Film</option>
-                        <option value = "tv">TV</option>
-                        <option value = "art">Art</option>
-                        <option value = "politics">Politics</option>
-                    </select>
-                    
-                </div>
-                
-                
-                {{!-- Made Irrelevant after search box 
-                <div class = "relative" id = "tags-box">
-                    <input type="text" id="tag-picker" placeholder = "Tags, tags, tags...">
-                    <span class = "detail">Separate tags with commas.</span>
-                </div>
-                <button id = "filter-tags">Filter</button> --}}
-            </div>
-
-        </div>
-    {{#if userId}}
-        <button id = "logout">Logout</button> 
-    {{else}}
-        <div class="div-button centered-y" id = "show-account">
-            <p>☰</p>
-        </div>
-        <br>
-        <form id = "login-form">
+            {{else}}
+            <form id = "login-form">
             <input type="text" placeholder = "Username">
             <input type="password" placeholder = "Password">
             <button id = "signin">Sign In</button>
             <button id = "signup">/Up</button>
         </form>
-    {{/if}}
-      
+
+        {{/if}}
+
+        {{!-- <form id = "search-box">
+            <input type="text" id="search-bar" placeholder = "Search...">
+            <button id = "search">Go!</button>
+        </form> --}}
         
-</aside>
+    </nav>
+    {{{body}}}
+  
 </body>
 </html>

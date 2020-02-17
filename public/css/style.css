@@ -21,6 +21,8 @@ html {
 
 
 :root {
+    --navHeight: 45px;
+
     --layer0: rgb(28, 27, 34);
     --layer1: rgb(41, 50, 63);
     --layer2: rgb(55, 73, 85);
@@ -79,7 +81,7 @@ body {
     font-family: var(--text-family);
 }
 
-nav, main, aside {
+main, aside {
     padding: 5px;
 }
 
@@ -88,11 +90,15 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 10;
+    padding-right: 10px;
     width: 100%;
-    height: 35px;
+    height: var(--navHeight);
+    white-space:nowrap;
+    text-align:right;
 }
 
-nav a {
+/* nav a {
     height: 35px;
     max-width: 100%;
     z-index:10;
@@ -102,28 +108,56 @@ nav a > img {
     max-height: 100%;
     max-width: 100%;
     z-index:5;
+} */
+
+nav > * {
+    position: relative;
+    transform: translateY(-50%);
+    top: 50%;
+    display: inline-block;
+    text-align:center;
+    padding: 5px 10px;
+    font-size: 25px;
+    cursor: pointer;
+    vertical-align:top;
+}
+
+nav .detailbox {
+    border-radius: 50%;
+}
+
+nav #logout {
+    font-size: 16px;
+}
+
+nav a > img {
+    height: var(--navHeight);
+}
+
+#toggle-post, #account {
+    background: var(--layer0);
 }
 
 main {
     background: var(--layer0);
     position: fixed;
-    top: 35px;
+    top: var(--navHeight);
     left: 0;
-    right: 150px;
+    right: 0;
     bottom: 0;
     overflow-y: scroll;
 }
-
+/* 
 aside {
     background: var(--layer2);
     position: fixed;
     text-align: center;
-    top: 35px;
+    top: var(--navHeight);
     right: 0;
     width: 150px;
     bottom: 0;
     z-index: 5;
-}
+} */
 
 #show-account {
     display: none;
@@ -191,7 +225,7 @@ aside {
     left: 50%;
 }
 
-.div-button:hover .detail {
+.detailbox:hover .detail {
     display: block;
 }
 
@@ -207,21 +241,6 @@ aside {
     font-size:16px;
     background: var(--layer3);
     z-index: 20;
-}
-
-#account {
-    font-size: 20px;
-}
-
-#account p {
-    top: 50%;
-}
-
-#toggle-post {
-    font-size: 30px;
-    width: 35px;
-    height: 35px;
-    border-radius: 20px;
 }
 
 #signin, #signup {
@@ -318,7 +337,7 @@ aside {
 #login-form input {
     margin-bottom: 5px;
     padding: 5px 10px;
-    width: 100%;
+    width: 100px;
     background: var(--layer0);
     border: none;
     color:inherit;
@@ -328,19 +347,6 @@ aside {
     color: var(--layer4);
 }
 
-#logout {
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: var(--layer0);
-    color: inherit;
-    padding: 5px 15px;
-    border: var(--highlight) solid 2px;
-    border-bottom-left-radius: 20px;
-    border-top: none;
-    border-right: none;
-}
 
 /*BASIC POSITIONING CLASSES*/
 
@@ -351,13 +357,17 @@ aside {
     top: 50%;
 }
 
-.bottom-right, 
-.bottom-left, 
-.top-right, 
-.top-left,
+.bottom, 
+.top, 
+
 .right,
 .left {
     position: absolute;
+}
+
+.top {
+    position: absolute;
+    top: 0;
 }
 
 .right {

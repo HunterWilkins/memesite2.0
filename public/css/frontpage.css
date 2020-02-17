@@ -15,10 +15,6 @@ main {
     padding: 5px;
 }
 
-#genre-picker {
-    display: none;
-}
-
 #filters > * {
     max-width: 100%;
 }
@@ -27,40 +23,12 @@ main {
     margin-bottom: 10px;
 }
 
-#genre-select {
-    border: var(--layer3) solid 2px;
-    padding: 5px;
-    background: var(--layer0);
-    border-radius: 15px;
-    margin-bottom: 5px;
-    cursor: pointer;
-    position: relative;
-    z-index: 15;
-}
-
-#genre-select:hover {
-    border-color: var(--highlight);
-}
-
 #genres {
-    display: none;
-    position: absolute;
-    text-align: left;
-    top: 108%;
-    left: 0;
-    width: 100%;
-    z-index: 14;
-    background: var(--layer0);
-}
-
-#genres a {
-    display: inline-block;
-    width: 100%;
-    padding: 5px;
-}
-
-#genres a:hover {
-    background: var(--layer4);
+    cursor: pointer;
+    padding: 5px 10px;
+    background: var(--layer1);
+    font-size: 16px;
+    color: inherit;
 }
 
 #tag-picker {
@@ -125,11 +93,7 @@ main {
     width: 35%;
 }
 
-#genre-picker-box {
-    display:none;
-}
-
-
+/* 
 @media only screen and (max-width: 400px) {
     
     #genre-picker-box {
@@ -223,4 +187,4 @@ main {
     #tags-box:hover .detail {
         display: none;
     }
-}
+} */

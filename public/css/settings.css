@@ -3,6 +3,17 @@ header {
     height: 50px;
 }
 
+section {
+    position: relative;
+}
+
+#logout {
+    background: var(--layer0);
+    color: var(--layer4);
+    border: inherit;
+    font-size: 16px;
+}
+
 header > * {
     position: absolute;
     transform: translateY(-50%);

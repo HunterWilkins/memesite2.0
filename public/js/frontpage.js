@@ -20,7 +20,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#genre-picker").on("change", function() {      
+    $("#genres").on("change", function() {      
         window.location.replace(`/frontpage/${$(this).val().toLowerCase()}`);
     });
 
