@@ -85,6 +85,10 @@ main, aside {
     padding: 5px;
 }
 
+select {
+    -webkit-appearance: none;
+}
+
 nav {
     background: var(--layer1);
     position: fixed;
