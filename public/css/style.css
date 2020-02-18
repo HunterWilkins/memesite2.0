@@ -353,6 +353,7 @@ aside {
     background: var(--layer0);
     border: none;
     color:inherit;
+    font-size: 16px;
 }
 
 #login-form input::placeholder {
