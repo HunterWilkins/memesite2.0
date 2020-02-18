@@ -92,7 +92,7 @@ module.exports = function(app) {
             req.session.username = dbUser.username;
             res.json(dbUser);
         }).catch(function(err) {
-            res.json(err);
+            res.send(err);
         });
     });
 
@@ -115,8 +115,6 @@ module.exports = function(app) {
             else {
                 res.sendStatus(500);
             }
-            
-            
         }).catch(function(err) {
             res.json(err);
         });

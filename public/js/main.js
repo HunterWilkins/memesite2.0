@@ -22,16 +22,34 @@ $(document).ready(function() {
 
     $("#login-form").on("click", "button", function() {
         event.preventDefault();
+        let route = $(this).text();
         $.ajax({
             type: "POST",
-            url: `/api/${$(this).text() === "Sign In" ? "signin" : "signup" }`,
+            url: `/api/${route === "Sign In" ? "signin" : "signup" }`,
             data: {
                 username: $("input[placeholder = Username]").val(),
                 password: $("input[type=password]").val(),
                 id: Math.floor(Math.random() * 2000).toString()
             },
-            success: function() {        
-                window.location.reload();  
+            success: function(data) { 
+                console.log(data);
+                if (data.name == "MongoError") {
+                    console.log(route);
+                    if (route === "/Up") {
+                        alert("A user with that username already exists. Try making up a new username.");
+                    }
+                    else {
+                        alert("Wrong Username or Password");
+                    }
+                }       
+            },
+            error: function(data) {
+                if (route === "/Up") {
+                    alert("A user with that username already exists. Try making up a new username.");
+                }
+                else {
+                    alert("Wrong Username or Password");
+                }
             }
         });
         
