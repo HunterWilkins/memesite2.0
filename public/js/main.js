@@ -103,9 +103,9 @@ $(document).ready(function() {
                     genre: $("#post-genre").val(),
                     tags: tags
                 },
-                success: function() {
+                success: function(data) {
                     console.log("Success!");
-                    // window.location.reload();
+                    window.location.replace("/posts/" + data.id)
                 },
                 error: function() {
                     console.log("Error");

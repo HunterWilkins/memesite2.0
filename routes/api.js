@@ -286,11 +286,13 @@ module.exports = function(app) {
             }).then(function() {
                 User.deleteOne({
                     id: req.session.userId
+                }).then(function() {
+                    req.session.destroy();
+                    res.sendStatus(200);
                 });
             });
             
-            req.session.destroy();
-            res.sendStatus(200);
+           
         }).catch(err => console.log(err));
     });
 

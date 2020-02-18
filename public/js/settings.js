@@ -146,7 +146,7 @@ $(document).ready(function(){
                 method: "DELETE",
                 success: function() {
                     window.location.replace("/frontpage/all");
-                    window.location.reload();
+                    
                 }
             });
         }
