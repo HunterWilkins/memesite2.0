@@ -18,7 +18,7 @@ module.exports = function(app) {
     app.post("/api/posts/:genre", function(req, res) {
         console.log("================FINDING POSTS================");
         console.log(req.params.genre);
-        Post.find(req.params.genre === "all" || req.params.genre === "undefined" ? {} : {genre: req.params.genre})
+        Post.find(req.params.genre === "all" || req.params.genre === "undefined" ? {} : {genre: req.params.genre}).sort({timeCreated: 1})
         .then(function(dbPosts) {
             console.log("=/=/=/=/=/Found These Posts:/=/=/=/=/");
             let resultingPosts = [];
