@@ -144,7 +144,10 @@ $(document).ready(function(){
             $.ajax({
                 url: "/api/user/delete",
                 method: "DELETE",
-                success: window.location.reload()
+                success: function() {
+                    window.location.replace("/frontpage/all");
+                    window.location.reload();
+                }
             });
         }
     });

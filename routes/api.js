@@ -105,9 +105,7 @@ module.exports = function(app) {
             username: req.body.username
         }, {"id" : newId}, {useFindAndModify: false})
         .then(function(dbUser) {
-            console.log(dbUser.password);
-            console.log(req.body.password);
-            console.log(bcrypt.compareSync(dbUser.password, req.body.password));
+            console.log(dbUser);
             if (bcrypt.compareSync(req.body.password, dbUser.password) === true) {
                 req.session.userId = newId;
                 req.session.username = dbUser.username;
@@ -279,9 +277,18 @@ module.exports = function(app) {
     });
 
     app.delete("/api/user/delete", function(req, res) {
-        User.deleteOne({
+        User.findOne({
             id: req.session.userId
-        }).then(function() {
+        }).then(function(dbUser) {
+            console.log(dbUser);
+            Post.deleteMany({
+                author: dbUser.username
+            }).then(function() {
+                User.deleteOne({
+                    id: req.session.userId
+                });
+            });
+            
             req.session.destroy();
             res.sendStatus(200);
         }).catch(err => console.log(err));

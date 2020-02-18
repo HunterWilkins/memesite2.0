@@ -5,7 +5,6 @@ module.exports = function(app) {
 
     app.get("/frontpage/:genre", function(req,res) {
         if (req.session.userId && req.session.username) {
-            console.log("Found the user.");
             res.render("frontpage", {userId: req.session.userId, username: req.session.username});
         }
 
