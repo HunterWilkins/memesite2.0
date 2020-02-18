@@ -34,7 +34,8 @@
             <input type="password" placeholder = "Password">
             <button id = "signin">Sign In</button>
             <button id = "signup">/Up</button>
-        </form>
+            </form>
+            <div id="show-account">☰</div>
 
         {{/if}}
 
@@ -45,6 +46,39 @@
         
     </nav>
     {{{body}}}
-  
+    <div class="blackdrop"> <!--Black Overlay for Post-->
+        <form id = "create-post" >
+            <div class = "div-button" id = "close-post">
+                <p>X</p>
+            </div>
+
+            <h2>Create a Post</h2>
+            <br>
+            <input type="text" placeholder = "Title" maxlength = "80">
+            <br>
+            <textarea placeholder = "Body"></textarea>
+            <br>
+            <input id = "image-link" type ="text" placeholder = "Image Link (Optional)">
+            <br>
+            <select id="post-genre">
+                <option disabled selected>Pick A Genre</option>
+                <option value="gaming">Gaming</option>
+                <option value="literature">Literature</option>
+                <option value="music">Music</option>
+                <option value="comedy">Comedy</option>
+                <option value="programming">Programming</option>
+                <option value="animals">Animals</option>
+                <option value="film">Film</option>
+                <option value="tv">TV</option>
+                <option value="art">Art</option>
+                <option value="politics">Politics</option>
+            </select>
+            <br>
+            <input type="text" placeholder = "Tags,separated,by,commas" id = "post-tags">
+            <br>
+            <button id = "submit-post">Submit</button>
+        </form>
+
+    </div>
 </body>
 </html>

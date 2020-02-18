@@ -258,14 +258,14 @@ aside {
 }
 
 #close-post {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-top: none;
     border-right:none;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-top-left-radius: 0;
-    position: absolute;
+    position: absolute; 
     top: 0px;
     right: 0px;
 }
@@ -284,6 +284,7 @@ aside {
 #create-post {
     display: none;
     position: fixed;
+    text-align: center;
     transform: translateX(-50%);
     left: 50%;
     min-width: 300px;
@@ -304,6 +305,7 @@ aside {
 
 #create-post input, #create-post textarea {
     padding: 10px;
+    width: 95%;
     background: var(--layer0);
     font-size: 16px;
     border: none;
@@ -334,6 +336,12 @@ aside {
     color: var(--highlight);
 }
 
+#login-form {
+    position: relative;
+    display: inline-block;
+    text-align:right;
+}
+
 #login-form input {
     margin-bottom: 5px;
     padding: 5px 10px;
@@ -347,6 +355,9 @@ aside {
     color: var(--layer4);
 }
 
+#show-account {
+    display: none;
+}
 
 /*BASIC POSITIONING CLASSES*/
 
@@ -401,15 +412,6 @@ aside {
 
 /* MOBILE VIEW */
 @media only screen and (max-width: 400px) {
-    aside {
-        width: 100%;
-        top: initial;
-        height: 70px;
-    }
-
-    aside form {
-        width: 50%;
-    }
 
     #search-bar {
         width: 50%;
@@ -449,23 +451,19 @@ aside {
     }
 
     #login-form {
+        position: absolute;
+        width: 100%;
+        top: 150%;
+        background: var(--layer1);
         display: none;
-        position: fixed;
-        padding: 5px;
-        bottom: 50px;
-        right: 0;
-        width: 50%;
-        background: var(--layer3);
-        box-shadow: 0px 5px 5px black;
+    }
+
+    #login-form > input {
+        width: 25%;
     }
 
     #frontpage-title {
         margin-top: 10px;
-    }
-
-    #login-form input {
-        width: 100%;
-        font-size: 18px;
     }
 
     #login-form button {
@@ -499,11 +497,5 @@ aside {
     .div-button:hover .detail {
         display: none;
     }
-
-    main {
-        bottom: 70px;
-        width: 100%;
-    }
-
 
 }
