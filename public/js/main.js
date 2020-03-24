@@ -32,7 +32,7 @@ $(document).ready(function() {
                 id: Math.floor(Math.random() * 2000).toString()
             },
             success: function(data) { 
-                console.log(data);
+                // console.log(data);
                 if (data.username) {
                     window.location.reload();
                 }
@@ -65,12 +65,12 @@ $(document).ready(function() {
             type: "POST",
             url: "/api/logout",
             success: function() {
-                console.log("Succeeding!");
+                
                 window.location.reload();
             },
             error: function(jqXHR, exception) {
-                console.log(jqXHR);
-                console.log(exception);
+                // console.log(jqXHR);
+                // console.log(exception);
             }
         });
     });
@@ -125,11 +125,12 @@ $(document).ready(function() {
                     tags: tags
                 },
                 success: function(data) {
-                    console.log("Success!");
+                    // console.log("Success!");
                     window.location.replace("/posts/" + data.id)
                 },
                 error: function() {
-                    console.log("Error");
+                    alert("Something went wrong with submitting the post. If you see this, contact wilkins.hunter@gmail.com");
+                    // console.log("Error");
                 }
             });
 

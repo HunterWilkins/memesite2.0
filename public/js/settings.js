@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     // Gets all posts and comments the user made
     $.getJSON("/api/currentUser", function(data) {
-        console.log(data);
+        // console.log(data);
 
         data.posts.forEach(item => {
            
@@ -50,9 +50,9 @@ $(document).ready(function(){
             let paragraphs = characters.split("\n");
             let columns = $(item).attr("cols");
             let totalRows = paragraphs.length;
-            console.log(characters, paragraphs, totalRows);
+            // console.log(characters, paragraphs, totalRows);
             paragraphs.forEach( item => {
-                console.log(item);
+                // console.log(item);
                 totalRows += parseInt(item.length/columns);
             });
 
@@ -60,7 +60,7 @@ $(document).ready(function(){
                 totalRows = 20;
             }
 
-            console.log(totalRows);
+            // console.log(totalRows);
 
             $(item).attr("rows", totalRows);
         });
@@ -162,10 +162,10 @@ $(document).ready(function(){
                 postId: $(this).attr("data-postId")
             },
             success: function() {
-                console.log("SUCCESS");
+                // console.log("SUCCESS");
             },
             error: function() {
-                console.log("ERROR");
+                // console.log("ERROR");
             }
         });
 
@@ -231,7 +231,7 @@ $(document).ready(function(){
 
     function toggleDisplay(element) {
         let toggler = "#toggle-" + element.slice(1);
-        console.log(toggler);
+        // console.log(toggler);
         if ($(element).css("display") === "block") {
             $(element).css({display: "none"});
             $(toggler + " button").css({transform: "rotateZ(0deg)"});

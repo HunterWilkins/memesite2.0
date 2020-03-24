@@ -43,7 +43,7 @@ $(document).ready(function() {
     })
 
     $("#filter-tags").on("click", function(){
-        console.log($("#tag-picker").val());
+        // console.log($("#tag-picker").val());
         $.ajax({
             url:`/api/posts/${$("#genre-picker").val()}`,
             method: "POST",

@@ -5,7 +5,7 @@ $(document).ready(function() {
         downvotes;
     // Get the relevant post by Id
     $.getJSON(`/api/post/${window.location.pathname.split("/")[2]}`, function(data) {
-        console.log(data);
+        // console.log(data);
 
         upvotes = data.upvotes;
         downvotes = data.downvotes;
@@ -171,7 +171,7 @@ $(document).ready(function() {
         let ratio;
         let value;
         if ($(this).attr("id") === "upvote") {
-            console.log("+1");
+            // console.log("+1");
             value = "+";
             upvotes++;
         }
