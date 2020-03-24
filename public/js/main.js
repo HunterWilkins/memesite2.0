@@ -25,7 +25,7 @@ $(document).ready(function() {
         let route = $(this).text();
         $.ajax({
             type: "POST",
-            url: `/api/${route === "Sign In" ? "signin" : "signup" }`,
+            url: `/api/${route === "Sign In" ? "signin" : "signup"}`,
             data: {
                 username: $("input[placeholder = Username]").val(),
                 password: $("input[type=password]").val(),
@@ -33,15 +33,18 @@ $(document).ready(function() {
             },
             success: function(data) { 
                 console.log(data);
-                if (data.name == "MongoError") {
-                    console.log(route);
+                if (data.username) {
+                    window.location.reload();
+                }
+
+                else {
                     if (route === "/Up") {
                         alert("A user with that username already exists. Try making up a new username.");
                     }
                     else {
                         alert("Wrong Username or Password");
                     }
-                }       
+                }
             },
             error: function(data) {
                 if (route === "/Up") {
